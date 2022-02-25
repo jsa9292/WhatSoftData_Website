@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>What Soft Data</title>
+    <title>Unity WebGL Player | Website</title>
   </head>
-  <body style="text-align: center; margin:0; padding:0">
-    <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; background: #231F20"></canvas>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" width=1920 height=975 style="width: 1920px; height: 975px; background: #231F20"></canvas>
     <script src="Build/WhatSoftData_Website.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, height=window.innerHeight, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-canvas").style.height = window.innerHeight + "px";
       }
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WhatSoftData_Website.data",
-        frameworkUrl: "Build/WhatSoftData_Website.framework.js",
-        codeUrl: "Build/WhatSoftData_Website.wasm",
+        dataUrl: "Build/WhatSoftData_Website.data.gz",
+        frameworkUrl: "Build/WhatSoftData_Website.framework.js.gz",
+        codeUrl: "Build/WhatSoftData_Website.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "WhatSoftData",
         productName: "Website",
