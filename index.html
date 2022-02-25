@@ -6,8 +6,11 @@
     <title>Unity WebGL Player | Website</title>
   </head>
   <body style="text-align: center; margin:0; padding:0">
-    <canvas id="unity-canvas" width=window.innerWidth height=window.innerHeight style="width: 100vw; height: 100vh; display:block; background: #231F20"></canvas>
- 
+    <canvas id="unity-canvas" width=device-width height=device-height style="width: 100vw; height: 100vh; display:block; background: #231F20"></canvas>
+    <script>
+      document.querySelector("unity-canvas").style.height = window.innerHeight + "px";
+
+    </script>
     <script src="Build/WhatSoftData_Website.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
