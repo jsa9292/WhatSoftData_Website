@@ -13,14 +13,15 @@
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, height=window.innerHeight, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         document.querySelector("#unity-canvas").style.height = window.innerHeight + "px";
       }
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WhatSoftData_Website.data",
-        frameworkUrl: "Build/WhatSoftData_Website.framework.js",
-        codeUrl: "Build/WhatSoftData_Website.wasm",
+        dataUrl: "Build/WhatSoftData_Website.data.br",
+        frameworkUrl: "Build/WhatSoftData_Website.framework.js.br",
+        codeUrl: "Build/WhatSoftData_Website.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "WhatSoftData",
         productName: "Website",
