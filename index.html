@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>WhatSoftData</title>
+    <title>Unity WebGL Player | Website</title>
   </head>
   <body style="text-align: center; margin:0; padding:0">
     <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; background: #231F20"></canvas>
@@ -19,9 +19,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WhatSoftData_Website.data",
-        frameworkUrl: "Build/WhatSoftData_Website.framework.js",
-        codeUrl: "Build/WhatSoftData_Website.wasm",
+        dataUrl: "Build/WhatSoftData_Website.data.unityweb",
+        frameworkUrl: "Build/WhatSoftData_Website.framework.js.unityweb",
+        codeUrl: "Build/WhatSoftData_Website.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "WhatSoftData",
         productName: "Website",
