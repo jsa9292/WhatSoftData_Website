@@ -82,9 +82,9 @@
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
-
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
+
       }
 
       config.devicePixelRatio = 2.5;
@@ -102,6 +102,8 @@
         });
       };
       document.body.appendChild(script);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
     </script>
   </body>
 </html>
