@@ -82,12 +82,12 @@
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
-        config.devicePixelRatio = 1;
 
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
       }
 
+      config.devicePixelRatio = 1;
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
