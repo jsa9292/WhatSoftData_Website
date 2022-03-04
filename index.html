@@ -113,6 +113,8 @@
     </script>
 	<!-- Text part of the page -->
 	<style>
+	   @media screen and (min-width: 1280px) {
+}
        @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
        :root {
 		--menu-en-font-size: min(calc(120/1080*100vh),calc(120/1980*100vw));
@@ -157,7 +159,7 @@
 		font-weight:var(--text-en-font-weight); 
 		font-size:var(--text-en-font-size);  
 		position: absolute; 
-		right: var(--text-pos-right); 
+		left: 25vw; 
 		top: var(--text-pos-top);
 		width: 25vw; 
 		padding: 0px; 
@@ -173,18 +175,19 @@
 		.eng-text{
 		font-size:20px;
 		}
+		}
     </style>
-    <input id="logo" class="button" type="image" src="images/logo.png" style="height:30px; left:50px; top:50px;">
-    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:30px; right:50px; top:50px;">
+    <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1980*100vw); left:50px; top:50px;">
+    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1980*100vw); right:50px; top:50px;">
 	<div id="footer" class="footer">
 		1.1v&nbsp<br>
 		Copyright © 2022. whatsoftdata. All rights reserved.
 	</div>
-	<div id="menu" style="height:calc(480/1080*100vh); width:25vw; position:absolute; left:50px;bottom:50px; text-align:left; vertical-align:bottom">
+	<div id="menu" style="height:calc(480/1080*100vh); width:25vw; position:absolute; bottom:50px; text-align:left; vertical-align:bottom">
 		<div style="height:25%;"></div>
-		<input id="who" class="button" type="button" value="who" style="height:25%; position:relative;"><br>
-		<input id="what" class="button" type="button" value="what" style="height:25%; position:relative;"><br>
-		<input id="where" class="button" type="button" value="where" style="height:25%; position:relative;">
+		<input id="who" class="button" type="button" value="who" style="height:25%; left:50px;position:relative;"><br>
+		<input id="what" class="button" type="button" value="what" style="height:25%; left:50px;position:relative;"><br>
+		<input id="where" class="button" type="button" value="where" style="height:25%; left:50px;position:relative;">
 	</div>
     <div id="who-text" class="draggable">	
 	  <h1>about</h1>
@@ -306,7 +309,7 @@
             // follow the invisible helper with custom easing.
             $(this).stop().animate({
                 top: ui.helper.position().top
-            },1000,'easeOutCirc');
+            },500,'easeOutCirc');
         }
 	})
 	.bind("mousewheel", function(event, delta) {
@@ -360,7 +363,7 @@
     $( "#who" )
 	.click( function( event ) 
 	{
-		$( "#who-text" ).show("fade",{},fadein_speed);
+		$( "#who-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		$(this).value = "누가";
@@ -377,7 +380,7 @@
     $( "#what" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).show("fade",{},fadein_speed);
+		$( "#what-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		what_unity();
 	} )
@@ -393,7 +396,7 @@
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).show("fade",{},fadein_speed);
+		$( "#where-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		where_unity();
 	} )
 	.css(
