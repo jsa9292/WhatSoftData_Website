@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,16 +7,49 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
-       #draggable { width: 150px; height: 150px; padding: 0.5em; }
+       @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
+       :root {
+	--menu-en-font-size: 120px;
+	--menu-en-font-family: NeueHaasDisplayRoman;
+	--menu-en-font-weight: 900;
+	--text-en-font-size: 20px;
+	--text-en-font-family: NeueHaasDisplayRoman;
+	--text-en-font-weight: 400;
+	--clear-background: rgba(0,0,0,0);
+	--text-pos-right: 50vw;
+	--text-pos-bottom: 60vh;
+	}
+       .draggable { 
+	color:white; 
+	font-family:var(--text-en-font-family); 
+	font-weight:var(--text-en-font-weight); 
+	font-size:var(--text-en-font-size);  
+	position: absolute; 
+	right: var(--text-pos-right); 
+	top: var(--text-pos-bottom);
+	width: 150px; 
+	height: 150px; 
+	padding: 0px; 
+	border:0px; 
+	margin:0px; 
+	background-color:var(--clear-background); 
+	}
+       .button{ 
+	color:white; 
+	font-family:var(--menu-en-font-family); 
+	font-weight:var(--menu-en-font-weight); 
+	font-size:var(--menu-en-font-size); 
+	position: absolute; 
+	padding: 0 0 0 2px ; 
+	border:0px; 
+	margin:0px; 
+	background-color:var(--clear-background); 
+	cursor:pointer;
+	}
     </style>
     <link rel="stylesheet" href="jquery/jquery-ui.min.css">
     <script src="jquery/external/jquery/jquery.js"></script>
     <script src="jquery/jquery-ui.min.js"></script>
-    <script>
-       $( function() {
-         $( "#draggable" ).draggable();
-       } );
-    </script>
   </head>
   <body style="text-align: center; margin:0; padding:0">
     <div id="unity-container" class="unity-desktop">
@@ -113,9 +146,72 @@
       };
       document.body.appendChild(script);
     </script>
-
-    <div id="draggable" class="ui-widget-content">
-      <p>Drag me around</p>
+    <input id="logo" class="button" type="image" src="images/logo.png" style="height:30px; left:50px; top:50px;">
+    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:30px; right:50px; top:50px;">
+    <input id="who" class="button" type="button" value="who" style="left:50px; bottom:290px;">
+    <input id="what" class="button" type="button" value="what" style="left:50px; bottom:170px;">
+    <input id="where" class="button" type="button" value="where" style="left:50px; bottom:50px;">
+    <div id="who-text" class="draggable">
+      <p>
+	who-text
+      </p>
     </div>
+    <div id="what-text" class="draggable">
+      <p>
+	what-text
+      </p>
+    </div>
+    <div id="where-text" class="draggable">
+      <p>
+	where-text
+      </p>
+    </div>
+    <script>
+    // Callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $( "#effect" ).removeAttr( "style" ).hide().fadeIn();
+      }, 1000 );
+    };
+    function runEffect() {
+      // get effect type from
+      var selectedEffect = "fade";
+      var options = {};
+      // Run the effect
+      $( ".draggable" ).effect( selectedEffect, options, 500, callback );
+    };
+       $( function() {
+         $( ".draggable" ).draggable({
+	axis: "y",
+	revert: true,
+	revertDuration: 500,
+	scroll: true,
+	scrollSensitivity: 100,
+	scrollSpeed: 100,
+	});
+        $( "#logo" ).click( function( event ) 
+	{
+	console.log("logo");
+	} );
+        $( "#symbol" ).click( function( event ) 
+	{
+	console.log("symbol");
+	} );
+        $( "#who" ).click( function( event ) 
+	{
+	console.log("who");
+	runEffect();
+	} );
+        $( "#what" ).click( function( event ) 
+	{
+	console.log("what");
+	} );
+        $( "#where" ).click( function( event ) 
+	{
+	console.log("where");
+	} );
+
+       } );
+    </script>
   </body>
 </html>
