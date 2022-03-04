@@ -99,7 +99,7 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-		  canvas.style.background = rgb(280*progress, 71+9*progress, 199*progress);
+		  //canvas.style.background = rgb(280*progress, 71+9*progress, 199*progress);
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
         }).catch((message) => {
@@ -312,6 +312,7 @@
 		$( "#who-text" ).show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		$(this).value = "누가";
 		who_unity();
 	} );
     $( "#what" ).click( function( event ) 
