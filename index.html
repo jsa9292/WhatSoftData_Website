@@ -114,74 +114,77 @@
 	<!-- Text part of the page -->
 	<style>
 	   @media screen and (min-width: 1280px) {
-}
-       @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
-       :root {
-		--menu-en-font-size: min(calc(120/1080*100vh),calc(120/1980*100vw));
-		--menu-en-font-family: NeueHaasDisplayRoman;
-		--menu-en-font-weight: 900;
-		--text-en-font-size: 20px;
-		--text-en-font-family: NeueHaasDisplayRoman;
-		--text-en-font-weight: 400;
-		--clear-background: rgba(0,0,0,0);
-		--text-pos-right: 50vw;
-		--text-pos-top: 30vh;
-		}
-       .button{ 
-		color:white; 
-		font-family:var(--menu-en-font-family); 
-		font-weight:var(--menu-en-font-weight); 
-		font-size:var(--menu-en-font-size); 
-		position: absolute; 
-		padding: 0 0 0 2px ; 
-		border:0px; 
-		margin:0px; 
-		background-color:var(--clear-background); 
-		cursor:pointer;
-		vertical-align:top;
-		line-height:var(--menu-en-font-size);
-		}
-		.footer{
-		color:white; 
-		position:absolute; 
-		width:50vw;
-		right:50px; 
-		bottom: 50px; 
-		text-align:right; 
-		vertical-align: bottom; 
-		font-family:var(--text-en-font-family); 
-		font-weight:var(--text-en-font-weight); 
-		font-size:17px;
-		}
-       .draggable { 
-		color:white; 
-		font-family:var(--text-en-font-family); 
-		font-weight:var(--text-en-font-weight); 
-		font-size:var(--text-en-font-size);  
-		position: absolute; 
-		left: 25vw; 
-		top: var(--text-pos-top);
-		width: 25vw; 
-		padding: 0px; 
-		border:0px; 
-		margin:0px; 
-		background-color:var(--clear-background); 
-		text-align: left;
-		line-height:28px;
-		}
-		.ko-text{
-		font-size:18px;
-		}
-		.eng-text{
-		font-size:20px;
-		}
+		   @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
+		   @font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
+		   :root {
+			--menu-en-font-size: min(calc(120/1080*100vh),calc(120/1980*100vw));
+			--menu-en-font-family: NeueHaasDisplayRoman;
+			--menu-en-font-weight: 900;
+			--text-en-font-size: 20px;
+			--text-en-font-family: NeueHaasDisplayRoman;
+			--text-en-font-weight: 400;
+			--clear-background: rgba(0,0,0,0);
+			--text-pos-right: 50vw;
+			--text-pos-top: 30vh;
+			}
+		   .button{ 
+			color:white; 
+			font-family:var(--menu-en-font-family); 
+			font-weight:var(--menu-en-font-weight); 
+			font-size:var(--menu-en-font-size); 
+			position: absolute; 
+			padding: 0 0 0 2px ; 
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			cursor:pointer;
+			vertical-align:top;
+			line-height:var(--menu-en-font-size);
+			}
+			.footer{
+			color:white; 
+			position:absolute; 
+			left:50vw;
+			right:50px; 
+			bottom: 50px; 
+			text-align:right; 
+			vertical-align: bottom; 
+			font-family:var(--text-en-font-family); 
+			font-weight:var(--text-en-font-weight); 
+			font-size:17px;
+			}
+		   .draggable { 
+			color:white; 
+			position: absolute; 
+			left: 25vw; 
+			top: var(--text-pos-top);
+			width: 25vw; 
+			padding: 0px; 
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			text-align: left;
+			line-height:28px;
+			text-align: justify;
+			}
+			.ko-text{
+			font-family:SUIT-Variable; 
+			font-weight:var(--text-en-font-weight); 
+			font-size:18px;  
+			}
+			.eng-text{
+			font-family:var(--text-en-font-family); 
+			font-weight:var(--text-en-font-weight); 
+			font-size:20px;  
+			}
 		}
     </style>
     <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1980*100vw); left:50px; top:50px;">
     <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1980*100vw); right:50px; top:50px;">
 	<div id="footer" class="footer">
-		1.1v&nbsp<br>
-		Copyright © 2022. whatsoftdata. All rights reserved.
+		1.2v&nbsp<br>
+		Copyright © 2022. whatsoftdata.
+		All rights reserved.
 	</div>
 	<div id="menu" style="height:calc(480/1080*100vh); width:25vw; position:absolute; bottom:50px; text-align:left; vertical-align:bottom">
 		<div style="height:25%;"></div>
@@ -321,9 +324,10 @@
 	var fadein_speed = 200;
 	var fadeout_speed = 200;
 	var start_anim_speed = 1000;
-	var start_anim_offset = 2000;
-	var delay_between=200;
+	var start_anim_offset = 1000;
+	var delay_between=300;
 	var delay_anim=0;
+	var animationType = "easeOutBack";
     $( "#logo" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
@@ -332,12 +336,12 @@
 		logo_unity();
 	} )
 	.css(
-		"top","+="+start_anim_offset
+		"top","+="+start_anim_offset,
 	)
 	.delay(delay_anim)
 	.animate({
 		top:"-="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
+	},start_anim_speed,animationType);
 	delay_anim+=delay_between;
     $( "#symbol" ).click( function( event ) 
 	{
@@ -349,16 +353,7 @@
 	.delay(delay_anim)
 	.animate({
 		top:"-="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
-	delay_anim+=delay_between;
-	$( "#footer")
-	.css(
-		"bottom","-="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		bottom:"+="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
+	},start_anim_speed,animationType);
 	delay_anim+=delay_between;
     $( "#who" )
 	.click( function( event ) 
@@ -375,7 +370,7 @@
 	.delay(delay_anim)
 	.animate({
 		bottom:"+="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
+	},start_anim_speed,animationType);
 	delay_anim+=delay_between;
     $( "#what" ).click( function( event ) 
 	{
@@ -390,7 +385,7 @@
 	.delay(delay_anim)
 	.animate({
 		bottom:"+="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
+	},start_anim_speed,animationType);
 	delay_anim+=delay_between;
     $( "#where" ).click( function( event ) 
 	{
@@ -405,7 +400,16 @@
 	.delay(delay_anim)
 	.animate({
 		bottom:"+="+start_anim_offset,
-	},start_anim_speed,"easeOutBack");
+	},start_anim_speed,animationType);
+	delay_anim+=delay_between;
+	$( "#footer")
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,animationType);
     </script>
   </body>
 </html>
