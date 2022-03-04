@@ -6,6 +6,17 @@
     <title>whatsoftdata</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+       #draggable { width: 150px; height: 150px; padding: 0.5em; }
+    </style>
+    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script>
+       $( function() {
+         $( "#draggable" ).draggable();
+       } );
+    </script>
   </head>
   <body style="text-align: center; margin:0; padding:0">
     <div id="unity-container" class="unity-desktop">
@@ -102,5 +113,9 @@
       };
       document.body.appendChild(script);
     </script>
+
+    <div id="draggable" class="ui-widget-content">
+      <p>Drag me around</p>
+    </div>
   </body>
 </html>
