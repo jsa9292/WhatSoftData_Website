@@ -115,7 +115,7 @@
 	<style>
        @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
        :root {
-		--menu-en-font-size: calc(120/1980*100vw);
+		--menu-en-font-size: min(calc(120/1080*100vh),calc(120/1980*100vw));
 		--menu-en-font-family: NeueHaasDisplayRoman;
 		--menu-en-font-weight: 900;
 		--text-en-font-size: 20px;
@@ -137,6 +137,7 @@
 		background-color:var(--clear-background); 
 		cursor:pointer;
 		vertical-align:top;
+		line-height:var(--menu-en-font-size);
 		}
 		.footer{
 		color:white; 
@@ -173,8 +174,8 @@
 		font-size:20px;
 		}
     </style>
-    <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1080*100vh); left:100px; top:50px;">
-    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1080*100vh); right:100px; top:50px;">
+    <input id="logo" class="button" type="image" src="images/logo.png" style="height:30px; left:100px; top:50px;">
+    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:30px; right:100px; top:50px;">
 	<div id="footer" class="footer">
 		1.1v&nbsp<br>
 		Copyright © 2022. whatsoftdata. All rights reserved.
@@ -228,6 +229,7 @@
 		<p class="eng-text">SoftRx provides artistic experiments through the gamification of social experiences. SoftRx is a stage, a level, a platform, a system whereby the visitors take on a role and follow a specific set of instructions. The visitors ultimately become interconnected with one another, the space, and the soft data they produce.
 		<h2 style="color:rgb(253,80,0);">#1 soft launch</h2>
 
+		<p>
 		<span class="ko-text"><b>흔적 - 인터랙티브 방명록</b><br>
 		<span class="eng-text"><b>Traces - An interactive Guest Book</b><br>Unity3D, Azure Kinect
 		<p class="ko-text">인간은 미생물로 이루어진 내적 생태계로 이루어져 있습니다. 섭취하는 음식과 약, 생활환경 등에 의해 유기적으로 변화하는 이 생태계는, 특히 만나고 교류하게 되는 사람들에 가장 큰 영향을 받습니다. 
@@ -235,11 +237,13 @@
 		<p class="eng-text">Humans are composed of internal ecosystem of microbiota. This internal ecosystem is influenced by multiple factors, including food, environment, medication, but most importantly, the people you interact with. 
 		<p class="eng-text">This work reimagines the guest book as such an ecosystem and translates the time spent and the distance as the intimacy you share with this space. Through the ritual of leaving your traces, this ecosystem evolves to embody the engagement of the people that completes the space.
 		
+		<p>
 		<span class="ko-text"><b>퍼포밍 - 이모지 필터</b><br>
-		<span class="eng-text"><b>Performing - A face filter<b><br>SparkAR, Maya
+		<span class="eng-text"><b>Performing - A face filter</b><br>SparkAR, Maya
 		<p class="ko-text">이모티콘은 복합적인 기호학적 시스템으로, 대면 커뮤니케이션에서 표정이 하는 역할을 대신합니다. 다양한 이모티콘을 분류하고 표준화하기 위해 추천 알고리즘과 같은 많은 시도가 있어 왔습니다. 이 페이스 필터 레이어는 얼굴 근육 사용 없이 사전 분류된 감정을 연기할 수 있게 합니다. 
 		<p class="eng-text">Emojis are a complex system of semiotics that serves the role of facial expressions in in-person communications. Many attempts have been made to categorize and standardize diverse expressions of emojis, including recommendation algorithms. This layer lets you perform the pre-categorized emotions without engaging your face muscles.
 
+		<p>
 		<span class="ko-text"><b>한계점 - 공감각적 경계</b><br>
 		<span class="eng-text"><b>Threshold - A synesthetic adjoining</b><br>Unity3D, Arduino
 		<p class="ko-text">한계점을 지나 몽상으로 넘쳐흐르는 경계의 역할을 하는 공감각적 경험. 이 공간은 세월이 지나 사라지겠지만 그전까지 기억을 담는 용기이자 몽상가들의 피난처가 될 것입니다.
@@ -280,58 +284,125 @@
 	var revert_delay = 3000;
 	var mouse_over = false;
 	//initialize draggables hidden
-	$( ".draggable" ).hide();
-	$( ".draggable" ).draggable({
+	$( ".draggable" )
+	.hide()
+	.draggable({
 		axis: "y",
-		revert: mouse_over,
+		revert: false,
 		revertDuration: 1000,
-		scroll: true,
-		scrollSensitivity: 100,
-		scrollSpeed: 100,
-		containment: "document"
-	});
-	$( ".draggable" ).hover(function(event){
-		console.log(this.className);
-		if ($(this).class == ".draggable") mouse_over = true;
-		else mouse_over = false;
+		scroll: false,
+		helper: function(event, ui){
+            return $(this).clone().css('opacity',0)
+        },
+        create: function(){
+            // When the draggable is created, save its starting
+            // position into a data attribute, so we know where we
+            // need to revert to.
+            var $this = $(this);
+            $this.data('starttop',$this.position().top);
+        },
+        drag: function(event, ui){
+            // During dragging, animate the original object to
+            // follow the invisible helper with custom easing.
+            $(this).stop().animate({
+                top: ui.helper.position().top
+            },1000,'easeOutCirc');
+        }
 	})
-
+	.bind("mousewheel", function(event, delta) {
+		if(delta>0){
+			console.log(this.style.top);
+		}
+	});
 	//each button actions
 	var fadein_speed = 200;
 	var fadeout_speed = 200;
+	var start_anim_speed = 1000;
+	var start_anim_offset = 2000;
+	var delay_between=200;
+	var delay_anim=0;
     $( "#logo" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		logo_unity();
-	} );
+	} )
+	.css(
+		"top","+="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		top:"-="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
+	delay_anim+=delay_between;
     $( "#symbol" ).click( function( event ) 
 	{
 		symbol_unity();
-	} );
-    $( "#who" ).click( function( event ) 
+	} )
+	.css(
+		"top","+="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		top:"-="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
+	delay_anim+=delay_between;
+	$( "#footer")
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
+	delay_anim+=delay_between;
+    $( "#who" )
+	.click( function( event ) 
 	{
 		$( "#who-text" ).show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		$(this).value = "누가";
 		who_unity();
-	} );
+	} )
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
+	delay_anim+=delay_between;
     $( "#what" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).show("fade",{},fadein_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		what_unity();
-	} );
+	} )
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
+	delay_anim+=delay_between;
     $( "#where" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).show("fade",{},fadein_speed);
 		where_unity();
-	} );
+	} )
+	.css(
+		"bottom","-="+start_anim_offset
+	)
+	.delay(delay_anim)
+	.animate({
+		bottom:"+="+start_anim_offset,
+	},start_anim_speed,"easeOutBack");
     </script>
   </body>
 </html>
