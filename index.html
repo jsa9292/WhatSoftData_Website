@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>whatsoftdata</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
-    <script src="jquery/external/jquery/jquery.js"></script>
-    <script src="jquery/jquery-ui.min.js"></script>
   </head>
   <body style="text-align: center; margin:0; padding:0">
     <div id="unity-container" class="unity-desktop">
@@ -104,134 +101,6 @@
         });
       };
       document.body.appendChild(script);
-    </script>
-	<!-- Text part of the page -->
-	<style>
-       @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
-       :root {
-		--menu-en-font-size: 120px;
-		--menu-en-font-family: NeueHaasDisplayRoman;
-		--menu-en-font-weight: 900;
-		--text-en-font-size: 20px;
-		--text-en-font-family: NeueHaasDisplayRoman;
-		--text-en-font-weight: 400;
-		--clear-background: rgba(0,0,0,0);
-		--text-pos-right: 50vw;
-		--text-pos-bottom: 60vh;
-		}
-       .draggable { 
-		color:white; 
-		font-family:var(--text-en-font-family); 
-		font-weight:var(--text-en-font-weight); 
-		font-size:var(--text-en-font-size);  
-		position: absolute; 
-		right: var(--text-pos-right); 
-		top: var(--text-pos-bottom);
-		width: 150px; 
-		height: 150px; 
-		padding: 0px; 
-		border:0px; 
-		margin:0px; 
-		background-color:var(--clear-background); 
-		}
-       .button{ 
-		color:white; 
-		font-family:var(--menu-en-font-family); 
-		font-weight:var(--menu-en-font-weight); 
-		font-size:var(--menu-en-font-size); 
-		position: absolute; 
-		padding: 0 0 0 2px ; 
-		border:0px; 
-		margin:0px; 
-		background-color:var(--clear-background); 
-		cursor:pointer;
-		}
-    </style>
-    <input id="logo" class="button" type="image" src="images/logo.png" style="height:30px; left:50px; top:50px;">
-    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:30px; right:50px; top:50px;">
-    <input id="who" class="button" type="button" value="who" style="left:50px; bottom:290px;">
-    <input id="what" class="button" type="button" value="what" style="left:50px; bottom:170px;">
-    <input id="where" class="button" type="button" value="where" style="left:50px; bottom:50px;">
-    <div id="who-text" class="draggable">
-      <p>
-		who-text
-      </p>
-    </div>
-    <div id="what-text" class="draggable">
-      <p>
-		what-text
-      </p>
-    </div>
-    <div id="where-text" class="draggable">
-      <p>
-		where-text
-      </p>
-    </div>
-    <script>
-	//Unity functions placeholders
-	function logo_unity(){
-		console.log("logo");
-	}
-	function symbol_unity(){
-		console.log("symbol");
-	}
-	function who_unity(){
-		console.log("who");
-	}
-	function what_unity(){
-		console.log("what");
-	}
-	function where_unty(){
-		console.log("where");
-	}
-
-	//initialize draggables
-	$( ".draggable" ).hide();
-	$( ".draggable" ).draggable({
-		axis: "y",
-		revert: true,
-		revertDuration: 500,
-		scroll: true,
-		scrollSensitivity: 100,
-		scrollSpeed: 100,
-		containment: "window"
-	});
-
-	//each button actions
-	var fadein_speed = 200;
-	var fadeout_speed = 200;
-    $( "#logo" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		logo_unity();
-	} );
-    $( "#symbol" ).click( function( event ) 
-	{
-		symbol_unity();
-	} );
-    $( "#who" ).click( function( event ) 
-	{
-		$( "#who-text" ).show("fade",{},fadein_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		who_unity();
-	} );
-    $( "#what" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).show("fade",{},fadein_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		what_unity();
-	} );
-    $( "#where" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).show("fade",{},fadein_speed);
-		where_unity();
-	} );
     </script>
   </body>
 </html>
