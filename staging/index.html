@@ -111,8 +111,8 @@
           //progressBarFull.style.width = 100 * progress + "%";
 		  //min_loading = Math.min(progress,count/countMax);
 		  min_loading=(1-progress);
-		  var r = parseInt(253*min_loading);
-		  var g = parseInt(71+9*min_loading);
+		  var r = parseInt(236*min_loading);
+		  var g = parseInt(71-19*min_loading);
 		  var b = parseInt(199*(1-min_loading));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
 		}).then((unityInstance) => {
@@ -402,7 +402,6 @@
 		$( "#who-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		$(this).value = "누가";
 		who_unity();
 	} )
 	.css(
