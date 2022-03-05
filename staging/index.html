@@ -56,13 +56,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/wsd_test.loader.js";
+	  var build_forlder_target ="/WhatSoftData_Website";
+	  var compression_ending = ".br";
+      var loaderUrl = buildUrl + build_forlder_target +".loader.js";
       var config = {
-        dataUrl: buildUrl + "/wsd_test.data.unityweb",
-        frameworkUrl: buildUrl + "/wsd_test.framework.js.unityweb",
-        codeUrl: buildUrl + "/wsd_test.wasm.unityweb",
+        dataUrl: buildUrl + build_forlder_target+".data"+compression_ending,
+        frameworkUrl: buildUrl + build_forlder_target+".framework.js"+compression_ending,
+        codeUrl: buildUrl + build_forlder_target +".wasm"+compression_ending,
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "WhatSoftData",
+        companyName: "whatsoftdata",
         productName: "Website",
         productVersion: "0.1",
         showBanner: unityShowBanner,
