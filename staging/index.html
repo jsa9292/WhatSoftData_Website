@@ -298,10 +298,10 @@
 	function logo_unity(){
 		console.log("logo");
 		if(unity_isLive) {
-		  unity.SendMessage('GraphicsManager', 'AcivateAsset',99);
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
 		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 		}
-		console.log("99,1");
+		console.log("-1,1");
 	}
 	function symbol_unity(){
 		console.log("symbol");
