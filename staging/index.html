@@ -166,6 +166,7 @@
 			text-align: left;
 			line-height:28px;
 			text-align: justify;
+			cursor:pointer;
 			}
 			.ko-text{
 			font-family:SUIT-Variable; 
@@ -273,18 +274,23 @@
 	//Unity functions placeholders
 	function logo_unity(){
 		console.log("logo");
+		unityInstance.SendMessage('graphicManager', 'logoPressed');
 	}
 	function symbol_unity(){
 		console.log("symbol");
+		unityInstance.SendMessage('graphicManager', 'symbolPressed');
 	}
 	function who_unity(){
 		console.log("who");
+		unityInstance.SendMessage('graphicManager', 'whoPressed');
 	}
 	function what_unity(){
 		console.log("what");
+		unityInstance.SendMessage('graphicManager', 'whatPressed');
 	}
 	function where_unity(){
 		console.log("where");
+		unityInstance.SendMessage('graphicManager', 'wherePressed');
 	}
 
 	var revert_delay = 3000;
@@ -298,7 +304,7 @@
 		revertDuration: 1000,
 		scroll: false,
 		helper: function(event, ui){
-            return $(this).clone().css('opacity',0)
+            return $('<div></div>').clone().css('opacity',0)
         },
         create: function(){
             // When the draggable is created, save its starting
@@ -311,8 +317,8 @@
             // During dragging, animate the original object to
             // follow the invisible helper with custom easing.
             $(this).stop().animate({
-                top: ui.helper.position().top
-            },500,'easeOutCirc');
+                top: "+="+(ui.helper.position().top - $(this).position().top)*3
+            },700,'easeOutCirc');
         }
 	})
 	.bind("mousewheel", function(event, delta) {
