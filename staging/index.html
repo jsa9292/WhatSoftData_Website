@@ -97,6 +97,7 @@
 
       config.devicePixelRatio = 2.5;
       var script = document.createElement("script");
+	  var unity_isLive = false;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
@@ -107,6 +108,7 @@
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+		  unity_isLive = true;
         }).catch((message) => {
           //alert(message);
         });
@@ -276,23 +278,23 @@
 	//Unity functions placeholders
 	function logo_unity(){
 		console.log("logo");
-		unityInstance.SendMessage('graphicManager', 'logoPressed');
+		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'logoPressed');
 	}
 	function symbol_unity(){
 		console.log("symbol");
-		unityInstance.SendMessage('graphicManager', 'symbolPressed');
+		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'symbolPressed');
 	}
 	function who_unity(){
 		console.log("who");
-		unityInstance.SendMessage('graphicManager', 'whoPressed');
+		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'whoPressed');
 	}
 	function what_unity(){
 		console.log("what");
-		unityInstance.SendMessage('graphicManager', 'whatPressed');
+		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'whatPressed');
 	}
 	function where_unity(){
 		console.log("where");
-		unityInstance.SendMessage('graphicManager', 'wherePressed');
+		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'wherePressed');
 	}
 
 	var revert_delay = 3000;
