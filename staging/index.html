@@ -119,6 +119,7 @@
           loadingBar.style.display = "none";
 		  unity_isLive = true;
 		  unity = unityInstance;
+		  unity.SendMessage('GraphicsManager', 'uiImagePosition',0);
         }).catch((message) => {
           //alert(message);
         });
