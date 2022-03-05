@@ -333,7 +333,6 @@
 
 	var revert_delay = 3000;
 	var mouse_over = false;
-	unity.SendMessage('GraphicsManager', 'uiImagePosition',0);
 	//initialize draggables hidden
 	$( ".draggable" )
 	.hide()
@@ -407,7 +406,16 @@
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		who_unity();
+		this.value = "누가";
 	} )
+	.mouseenter(function(){
+		this.value = "누가";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "who";
+		}
+	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
@@ -422,7 +430,16 @@
 		$( "#what-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		what_unity();
+		this.value = "무엇을";
 	} )
+	.mouseenter(function(){
+		this.value = "무엇을";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "what";
+		}
+	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
@@ -438,6 +455,14 @@
 		$( "#where-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		where_unity();
 	} )
+	.mouseenter(function(){
+		this.value = "어디서";
+		}
+	)
+	.mouseleave(function(){
+		this.value = "where";
+		}
+	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
