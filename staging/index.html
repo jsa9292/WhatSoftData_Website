@@ -99,11 +99,21 @@
 	  var unity = null;
       script.src = loaderUrl;
       script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-		  var r = parseInt(280*progress);
-		  var g = parseInt(71+9*progress);
-		  var b = parseInt(199*(1-progress));
+		var count = 0;
+		var countMax = 400;
+	    var counter = setInterval(function(){
+			console.log(count);
+			count++;
+			if(count>countMax){
+			  clearInterval(counter);return;
+			}
+		}, 10);
+		createUnityInstance(canvas, config, (progress) => {
+          //progressBarFull.style.width = 100 * progress + "%";
+		  min_loading = Math.min(progress,count/countMax);
+		  var r = parseInt(280*min_loading);
+		  var g = parseInt(71+9*min_loading);
+		  var b = parseInt(199*(1-min_loading));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
