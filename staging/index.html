@@ -298,7 +298,7 @@
 		console.log("logo");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'AcivateAsset',-1);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',false);
 		}
 	}
 	function symbol_unity(){
@@ -309,21 +309,21 @@
 		console.log("who");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
 		}
 	}
 	function what_unity(){
 		console.log("what");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
 		}
 	}
 	function where_unity(){
 		console.log("where");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
 		}
 	}
 
