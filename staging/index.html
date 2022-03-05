@@ -12,7 +12,7 @@
   </head>
   <body style="text-align: center; margin:0; padding:0; overflow: hidden; ">
     <div id="unity-container" class="unity-desktop">
-    <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; background:rgb(0,71,199)"></canvas>
+    <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; background:rgb(236,52,0)"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -110,9 +110,9 @@
 		createUnityInstance(canvas, config, (progress) => {
           //progressBarFull.style.width = 100 * progress + "%";
 		  //min_loading = Math.min(progress,count/countMax);
-		  min_loading=progress;
-		  var r = parseInt(280*min_loading);
-		  var g = parseInt(71+9*min_loading);
+		  min_loading=(1-progress);
+		  var r = parseInt(236*min_loading);
+		  var g = parseInt(71-19*min_loading);
 		  var b = parseInt(199*(1-min_loading));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
 		}).then((unityInstance) => {
@@ -299,7 +299,7 @@
 		console.log("logo");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'AcivateAsset',-1);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',false);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 		}
 	}
 	function symbol_unity(){
@@ -310,21 +310,21 @@
 		console.log("who");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 		}
 	}
 	function what_unity(){
 		console.log("what");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 		}
 	}
 	function where_unity(){
 		console.log("where");
 		if(unity_isLive) {
 		  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',true);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 		}
 	}
 
