@@ -354,12 +354,6 @@
             $(this).stop().animate({
                 top: "+="+(ui.helper.position().top - $(this).position().top)*3
             },700,'easeOutCirc');
-			if($(this).id == "#who-text" && ui.helper.position().top < -1100){
-				if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
-			}else{
-			
-				if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
-			}
         }
 	})
 	.bind("mousewheel", function(event, delta) {
