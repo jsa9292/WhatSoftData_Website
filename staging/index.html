@@ -99,25 +99,26 @@
 	  var unity = null;
       script.src = loaderUrl;
       script.onload = () => {
-		var count = 0;
-		var countMax = 400;
-	    var counter = setInterval(function(){
-			count++;
-			if(count>countMax){
-			  clearInterval(counter);return;
-			}
-		}, 10);
+		//var count = 0;
+		//var countMax = 400;
+	    //var counter = setInterval(function(){
+		//	count++;
+		//	if(count>countMax){
+		//	  clearInterval(counter);return;
+		//	}
+		//}, 10);
 		createUnityInstance(canvas, config, (progress) => {
           //progressBarFull.style.width = 100 * progress + "%";
-		  min_loading = Math.min(progress,count/countMax);
+		  //min_loading = Math.min(progress,count/countMax);
+		  min_loading=progress;
 		  var r = parseInt(280*min_loading);
 		  var g = parseInt(71+9*min_loading);
 		  var b = parseInt(199*(1-min_loading));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
 		})
-		.then(function(){
-			if(count==countMax) return;
-		})
+		//.then(function(){
+		//	if(count==countMax) return;
+		//})
 		.then((unityInstance) => {
           loadingBar.style.display = "none";
 		  unity_isLive = true;
@@ -188,12 +189,12 @@
 			.ko-text{
 			font-family:SUIT-Variable; 
 			font-weight:var(--text-en-font-weight); 
-			font-size:18px;  
+			font-size:1rem;  
 			}
 			.eng-text{
 			font-family:var(--text-en-font-family); 
 			font-weight:var(--text-en-font-weight); 
-			font-size:20px;  
+			font-size:1rem;  
 			}
 		}
     </style>
