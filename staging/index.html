@@ -96,6 +96,7 @@
       config.devicePixelRatio = 2.5;
       var script = document.createElement("script");
 	  var unity_isLive = false;
+	  var unity = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
@@ -107,6 +108,7 @@
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
 		  unity_isLive = true;
+		  unity = unityInstance;
         }).catch((message) => {
           //alert(message);
         });
@@ -208,17 +210,21 @@
 	  <p class="eng-text">whatsoftdata works in the intersection of art, design, and technology, producing social and perceptual experiences. whatsoftdata considers network and the rule-based system as its two main domains. Interactive art installations, XR experiences, and participator art are a few of how our work takes shape.
 	  <h1>members</h1>
 	  <h2 style="color:rgb(253,80,0)">insun</h2>
-	  <p class="eng-text">insun.pkg@whatsoftdata.com</p>	  <p class="ko-text"><b>아트 디렉터, 미디어 아티스트</b><br>
+	  <p class="eng-text">insun.pkg@whatsoftdata.com</p>
+	  <p class="ko-text"><b>아트 디렉터, 미디어 아티스트</b><br>
 		인선의 실감 미디어 작업들은 인터랙션, 형상화, 그리고 물질성을 복합적으로 이용한 시스템을 통해 사회적 관계를 탐구합니다. 인선은 UCLA에서 불어불문학을 공부하고, 시카고 예술 대학에서 예술 학사를 취득했습니다.
 	  <p class="eng-text"><b>Art Director, Media Artist</b><br>
 		Insun is an intermedia artist who generates immersive experiences to explore social relations, using a complex system of interaction, embodiment, and materiality. Insun holds BA from UCLA and BFA from the School of the Art Institute of Chicago.
 	  <h2 style="color:rgb(253,80,0)">sooyeon</h2>
-	  <p class="eng-text">sooyeon.ai@whatsoftdata.com</p>	  <p class="ko-text"><b>브랜딩 디렉터, 현대 시각 문화 연구원</b><br>
+	  <p class="eng-text">sooyeon.ai@whatsoftdata.com</p>
+	  <p class="ko-text"><b>브랜딩 디렉터, 현대 시각 문화 연구원</b><br>
 		한국과 프랑스 이곳저곳에서 이것저것을 배웠습니다. 기획, 디자인, 아트, 마케팅의 잡탕 브랜딩에 엉뚱함 한 바가지 넣곤 합니다.
 	  <p class="eng-text"><b>Branding Director, Otaku</b><br>
-		Sooyeon learned this and that from here and there in Korea and France. She likes to add a bucket of wackiness to the branding which is a mixture of UI/UX, art, and marketing.	  </p>
+		Sooyeon learned this and that from here and there in Korea and France. She likes to add a bucket of wackiness to the branding which is a mixture of UI/UX, art, and marketing.
+	  </p>
 	  <h2 style="color:rgb(253,80,0)">yesun</h2>
-	  <p class="eng-text">yesun.3ds@whatsoftdata.com</p>	  <p class="ko-text"><b>공간 디텍터, 이야기꾼</b><br>
+	  <p class="eng-text">yesun.3ds@whatsoftdata.com</p>
+	  <p class="ko-text"><b>공간 디텍터, 이야기꾼</b><br>
 		예선이는 공간을 좋아해서<br>
 		실내건축무대미술전시기획<br>
 		으로 파리ESAT에서 석사를 취득하였습니다.
@@ -227,14 +233,16 @@
 		interior-architecture-stage-art-exhibition-curation<br>
 		because she likes space.
 	  <h2 style="color:rgb(253,80,0)">jungsu</h2>
-	  <p class="eng-text">jungsu.cs@whatsoftdata.com</p>	  <p class="ko-text"><b>테크니컬 디렉터, 데이터 과학자</b><br>
+	  <p class="eng-text">jungsu.cs@whatsoftdata.com</p>
+	  <p class="ko-text"><b>테크니컬 디렉터, 데이터 과학자</b><br>
 		UCLA에서 인지과학 학사를 취득하고 챕맨 대학교에서 연산 및 데이터과학 석사과정을 졸업하였습니다. 다양한 연구 경력을 바탕으로 게임화를 이용한 심리측정을 통해 인지과학과 데이터 과학의 상호작용을 추구합니다. 정수의 최종 목표는 인간과 같은 (챗봇이 아닌!) 인공지능을 만드는 것입니다.
 	  <p class="eng-text"><b>Techincal Director, Data Scientist</b><br>
 		Jungsu earned Cognitive Science, B.A. at UCLA and Computational and Data Science, M.S. at Chapman University. He seeks an interaction between Cognitive Science and Data Science using gamified psychometrics. His ultimate goal is to create a human-like AI, <b>NOT</b> a conversational AI.​
     </div>
     <div id="what-text" class="draggable">
 		<h1>Soft Rx</h1>
-		<h2 style="color:rgb(253,80,0);">about</h2>		<p class="ko-text">소프트레시피는 사회적 경험을 게임화하여 예술적 실험으로 재해석합니다. 소프트레시피는 스테이지이며 플랫폼이자 시스템입니다. 방문객은 특정 역할을 맡고 디렉션에 따라 행동하게 됩니다. 방문객은 실험적 경험을 통해 타인, 공간, 그리고 그들이 생성한 소프트 데이타와 서로 연결되어 상호작용하게 됩니다.
+		<h2 style="color:rgb(253,80,0);">about</h2>
+		<p class="ko-text">소프트레시피는 사회적 경험을 게임화하여 예술적 실험으로 재해석합니다. 소프트레시피는 스테이지이며 플랫폼이자 시스템입니다. 방문객은 특정 역할을 맡고 디렉션에 따라 행동하게 됩니다. 방문객은 실험적 경험을 통해 타인, 공간, 그리고 그들이 생성한 소프트 데이타와 서로 연결되어 상호작용하게 됩니다.
 		<p class="eng-text">SoftRx provides artistic experiments through the gamification of social experiences. SoftRx is a stage, a level, a platform, a system whereby the visitors take on a role and follow a specific set of instructions. The visitors ultimately become interconnected with one another, the space, and the soft data they produce.
 		<h2 style="color:rgb(253,80,0);">#1 soft launch</h2>
 
@@ -262,12 +270,14 @@
 		<h1>contact</h1>
 		<h2 style="color:rgb(253,80,0)">offline</h2>
 		<span class="ko-text"><b>왓소프트데이타 <span class="eng-text">whatsoftdata</b>
-		<p class="ko-text">서울특별시 강남구 강남대로 584 6층 353호, 우편번호 06043
+
+		<p class="ko-text">서울특별시 강남구 강남대로 584 6층 353호, 우편번호 06043
 		<p class="eng-text">F6, 353, 584, Gangnam-daero, Gangnam-gu, Seoul, Republic of Korea, code postal 06043
 		<span class="ko-text"><b>소프트레시피 <span class="eng-text">Soft Rx</b>
 		<p class="ko-text">서울특별시 서초구 서초대로30길 27-3 1층, 우편번호 06662
 		<p class="eng-text">F1, 27-3, Seocho-daero 30-gil, Seocho-gu, Seoul, Republic of Korea, code postal 06662
-		<h2 style="color:rgb(253,80,0)">online</h2>
+
+		<h2 style="color:rgb(253,80,0)">online</h2>
 		<p class="eng-text">
 		www.whatsoftdata.com<br>
 		info@whatsoftdata.com
@@ -276,23 +286,23 @@
 	//Unity functions placeholders
 	function logo_unity(){
 		console.log("logo");
-		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'logoPressed');
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'logoPressed');
 	}
 	function symbol_unity(){
 		console.log("symbol");
-		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'symbolPressed');
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'EasterEgg');
 	}
 	function who_unity(){
 		console.log("who");
-		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'whoPressed');
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 	}
 	function what_unity(){
 		console.log("what");
-		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'whatPressed');
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 	}
 	function where_unity(){
 		console.log("where");
-		if(unity_isLive) unityInstance.SendMessage('graphicManager', 'wherePressed');
+		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 	}
 
 	var revert_delay = 3000;
