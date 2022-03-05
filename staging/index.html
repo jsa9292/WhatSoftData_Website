@@ -298,7 +298,10 @@
 	//Unity functions placeholders
 	function logo_unity(){
 		console.log("logo");
-		if(unity_isLive) unity.SendMessage('GraphicsManager', 'logoPressed');
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'AcivateAsset',-1);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		}
 	}
 	function symbol_unity(){
 		console.log("symbol");
@@ -306,15 +309,24 @@
 	}
 	function who_unity(){
 		console.log("who");
-		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		}
 	}
 	function what_unity(){
 		console.log("what");
-		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		}
 	}
 	function where_unity(){
 		console.log("where");
-		if(unity_isLive) unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		if(unity_isLive) {
+		  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
+		  unity.SendMessage('GraphicsManager', 'ParticleToggle','false');
+		}
 	}
 
 	var revert_delay = 3000;
