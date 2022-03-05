@@ -115,7 +115,10 @@
 		  var g = parseInt(71+9*min_loading);
 		  var b = parseInt(199*(1-min_loading));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
-        }).then((unityInstance) => {
+        }).then(function(){
+			await count==countMax;
+	  });
+		}).then((unityInstance) => {
           loadingBar.style.display = "none";
 		  unity_isLive = true;
 		  unity = unityInstance;
