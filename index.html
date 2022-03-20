@@ -127,9 +127,9 @@
     </script>
 	<!-- Text part of the page -->
 	<style>
-	   @media screen and (min-width: 400px) {
-		   @font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
-		   @font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
+		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
+		@font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
+		@media only screen and (orientation: landscape) {
 		   :root {
 			--menu-en-font-size: min(calc(120/1080*100vh),calc(120/1980*100vw));
 			--menu-en-font-family: NeueHaasDisplayRoman;
@@ -203,13 +203,13 @@
 			}
 			h1{
 				font-family: var(--text-en-font-family); 
-				font-weight:var(--text-en-font-weight); 
+				font-weight:900; 
 				margin-bottom: 20px;
 				margin-top: 0px;
 			}
 			h2{
 				font-family: var(--text-en-font-family); 
-				font-weight:var(--text-en-font-weight); 
+				font-weight:600; 
 				color:rgb(253,80,0);
 				margin-top: 10px;
 				margin-bottom: 10px;
@@ -218,7 +218,7 @@
     </style>
     <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1980*100vw); left:50px; top:50px;">
     <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1980*100vw); right:50px; top:50px;">
-	<div id="footer" class="footer">
+	<div id="footer" class="footer" style="bottom: 50px; ">
 		1.2v&nbsp<br>
 		Copyright © 2022. whatsoftdata.
 		All rights reserved.
