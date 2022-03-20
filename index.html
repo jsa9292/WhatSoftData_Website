@@ -128,6 +128,7 @@
     </script>
 	<!-- Text part of the page -->
 	<style>
+		html, body {height:100%; width:100%; min-width: 550px; min-height: 600px; }
 		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
 		@font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
 		:root {
@@ -178,8 +179,10 @@
 			display: flex;
 			flex-direction:column-reverse;
 			align-items: flex-start;
-			width:50vw; position:absolute; 
+			width:calc(50vw-50);
+			position:absolute; 
 			bottom:50px; 
+			left: 50px;
 			text-align:left; 
 			vertical-align:bottom;
 			}
@@ -191,7 +194,6 @@
 			position: absolute; 
 			border:0px; 
 			margin:0px; 
-			padding: 0px;
 			background-color:var(--clear-background); 
 			cursor:pointer;
 			line-height:calc(240/1980*100vw);
@@ -231,8 +233,10 @@
 			display: flex;
 			flex-direction:column-reverse;
 			align-items: flex-start;
-			width:25vw; position:absolute; 
+			width:calc(50vw-50);
+			position:absolute; 
 			bottom:50px; 
+			left: 50px;
 			text-align:left; 
 			vertical-align:bottom;
 			}
@@ -244,7 +248,6 @@
 			position: absolute;
 			border:0px; 
 			margin:0px; 
-			padding: 0px;
 			background-color:var(--clear-background); 
 			cursor:pointer;
 			vertical-align: bottom; 
@@ -279,17 +282,17 @@
 			}
 		}
     </style>
-    <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1980*100vw); left:50px; top:50px;">
-    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1980*100vw); right:50px; top:50px;">
+    <input id="logo" class="button" type="image" src="images/logo.png" style="height:30px; left:50px; top:50px;">
+    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:30px; right:50px; top:50px;">
 	<div id="footer" class="footer" style="bottom: 50px; ">
 		1.2v&nbsp<br>
 		Copyright © 2022. whatsoftdata.
 		All rights reserved.
 	</div>
 	<div id="menu">
-		<input id="where" class="button" type="button" value="where" style="left:50px;position:relative;"><br>
-		<input id="what" class="button" type="button" value="what" style="left:50px;position:relative;"><br>
-		<input id="who" class="button" type="button" value="who" style="left:50px;position:relative;">
+		<input id="where" class="button" type="button" value="where" style="position:relative;"><br>
+		<input id="what" class="button" type="button" value="what" style="position:relative;"><br>
+		<input id="who" class="button" type="button" value="who" style="position:relative;">
 	</div>
     <div id="who-text" class="draggable">	
 	  <h1>about</h1>
