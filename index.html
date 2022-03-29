@@ -129,10 +129,11 @@
 	<!-- Text part of the page -->
 	<style>
 		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
+		@font-face {font-family: NeueHaas65; src: url('fonts/NeueHaas65.ttf');}
 		@font-face {font-family: Suit-Variable; src: url('fonts/SUIT-Variable.ttf');}
 		:root {
-		--menu-en-font-family: NeueHaasDisplayRoman;
-		--menu-en-font-weight: 1000;
+		--menu-en-font-family: NeueHaas65;
+		--menu-en-font-weight: 500;
 		--text-en-font-size: 20px;
 		--text-en-font-family: NeueHaasDisplayRoman;
 		--text-en-font-weight: 400;
@@ -153,27 +154,32 @@
 		margine-bottom:15px;
 		}
 		.eng-text{
-		color:rgb(225,225,225); 
+		color:#FFFFFF80; 
 		font-family:var(--text-en-font-family); 
 		font-weight:var(--text-en-font-weight); 
 		font-size:15px;
 		line-height: 1.6;
 		text-align: left;
 		hyphens: auto;
-		letter-spacing: 1px;
-		margin-top: 15px;
+		letter-spacing: 1px; ./
+		margin-top: 15px;.c 
 		margin-bottom:40px;
 		}
 		h1{
-			font-family: var(--text-en-font-family); 
-			font-weight:900; 
+			text-align: left;
+			font: normal normal 500 35px/20px NeueHaas65;
+			letter-spacing: 0px;
+			color: #FFFFFF;
+			opacity: 1;
 			margin-bottom: 20px;
 			margin-top: 0px;
 		}
 		h2{
-			font-family: var(--text-en-font-family); 
-			font-weight:600; 
-			color:rgb(253,80,0);
+			text-align: left;
+			font: italic normal 300 35px/20px NeueHaasDisplayRoman;
+			letter-spacing: 0px;
+			color: #FD5000;
+			opacity: 1;
 			margin-top: 10px;
 			margin-bottom: 10px;
 		}
@@ -191,8 +197,8 @@
 			}
 		   .button{ 
 			color:white; 
-			font-family:var(--menu-en-font-family); 
-			font-weight:var(--menu-en-font-weight); 
+			font-family:NeueHaas65; 
+			font-weight:500; 
 			font-size:calc(240/1980*100vw); 
 			position: absolute; 
 			border:0px; 
@@ -245,43 +251,47 @@
 			}
 		}
 		@media only screen and (orientation: landscape) {
+			
 			#menu{
 			display: flex;
-			flex-direction:column-reverse;
+			flex-direction: column-reverse;
 			align-items: flex-start;
+			gap: 0px;
 			width:calc(50vw-50);
 			position:absolute; 
-			bottom:var(--margin); 
-			left: var(--margin);
+			bottom:100px; 
+			left: 100px;
 			text-align:left; 
-			vertical-align:bottom;
 			}
 		   .button{ 
 			color:white; 
-			font-family:var(--menu-en-font-family); 
-			font-weight:var(--menu-en-font-weight); 
-			font-size:calc(120/1980*100vw); 
+			font-family:NeueHaas65; 
+			font-weight:500; 
+			font-size:95px; 
 			position: absolute;
 			border:0px; 
 			margin:0px; 
 			background-color:var(--clear-background); 
 			cursor:pointer;
-			vertical-align: bottom; 
-			line-height:calc(120/1980*100vw);
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-		     -khtml-user-select: none; /* Konqueror HTML */
-			   -moz-user-select: none; /* Old versions of Firefox */
-				-ms-user-select: none; /* Internet Explorer/Edge */
-					user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+			vertical-align: bottom;
+			height: 90px;
+			}
+			#logo{
+				height:calc(30/1080*100vh); 
+				right:100px; 
+				top:50px;
+			}
+			#symbol{
+				height:calc(30/1080*100vh); 
+				left:100px; 
+				top:50px;
 			}
 			.footer{
 			color:white; 
 			position:absolute; 
 			left:50vw;
-			right:var(--margin); 
-			bottom: var(--margin); 
+			right:100px; 
+			bottom: 100px; 
 			text-align:right; 
 			vertical-align: bottom; 
 			font-family:var(--text-en-font-family); 
@@ -305,25 +315,25 @@
 			}
 		}
     </style>
-    <input id="logo" class="button" type="image" src="images/logo.png" style="height:calc(30/1080*100vh); left:var(--margin); top:var(--margin);">
-    <input id="symbol" class="button" type="image" src="images/symbol.png" style="height:calc(30/1080*100vh); right:var(--margin); top:var(--margin);">
-	<div id="footer" class="footer" style="bottom: var(--margin); ">
+    <input id="logo" class="button" type="image" src="images/logo.png">
+    <input id="symbol" class="button" type="image" src="images/symbol.png">
+	<div id="footer" class="footer" >
 		1.2v&nbsp<br>
 		Copyright © 2022. whatsoftdata.
 		All rights reserved.
 	</div>
 	<div id="menu">
-		<input id="where" class="button" type="button" value="where" style="position:relative;"><br>
-		<input id="what" class="button" type="button" value="what" style="position:relative;"><br>
+		<input id="where" class="button" type="button" value="where" style="position:relative;">
+		<input id="what" class="button" type="button" value="what" style="position:relative;">
 		<input id="who" class="button" type="button" value="who" style="position:relative;">
 	</div>
 	<ol>
-    <div id="who-text" class="draggable">	
+    <div id="who-text" id="accordion" class="draggable">	
 	  <h1>about</h1>
 	  <h2>whatsoftdata</h2>
       <p class="ko-text"><b>왓소프트데이타</b>는 수치화로 대변되는 데이타의 인간적 면모를 수집하고 분석하며 질문하는 아트 디자인 콜렉티브입니다. 데이터를 기반으로 사람과 사람, 사람과 사회, 사람과 데이터의 물리적, 사회적 균형과 연결에 대하여 이야기 합니다.
 	  <p class="eng-text"><b><i>whatsoftdata</b></i> is an art collective that seeks to soften thee pervasive hardness of technology by collecting, analyzing, and querying the humanness of data. whatsoftdata uses data as a medium to examine the physical and social balance and connection - between people, people and society, and people and data.
-	  <h2>vision</h2>
+	  <h2 >vision</h2>
 	  <p class="ko-text">왓소프트데이타는 <b>질문하고, 도발하고, 대항</b>합니다. 어떤 결론을 도출하기보다는 더 많은 의문을 추구합니다. 부드럽고 유동적이며 촉각, 감정, 주관을 포용합니다. 해석에 열려 있는 결론과 완벽하지 않은 모호함으로 대변됩니다. 수치, 아이템, 정보, 그 어떤 것이든 모아 분석하여 의미를 부여하며 가설을 시험합니다.
 	  <p class="eng-text">whatsoftdata<i><b> questions, provokes, and endorses antagonism</b></i>. whatsoftdata ends with another question rather than a conclusion. Fuzzy and malleable, we embrace the touchy, feely side of things. We test hypotheses by collecting numbers, items, information and analyzing and extracting meaning from them.
 	  <h2>domain</h2>
@@ -443,6 +453,11 @@
 		console.log("3,0");
 	}
 
+	$( function() {
+	$( "#accordion" ).accordion({
+		collapsible: true
+	});
+	} );
 	var revert_delay = 3000;
 	var mouse_over = false;
 	//initialize draggables hidden
@@ -479,12 +494,10 @@
 	var delay_between=300;
 	var delay_anim=0;
 	var animationType = "easeOutBack";
+
     $( "#logo" ).click( function( event ) 
 	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		logo_unity();
+		symbol_unity();
 	} )
 	.css(
 		"top","+="+start_anim_offset,
@@ -493,10 +506,17 @@
 	.animate({
 		top:"-="+start_anim_offset,
 	},start_anim_speed,animationType);
+
 	delay_anim+=delay_between;
     $( "#symbol" ).click( function( event ) 
 	{
-		symbol_unity();
+		$( "#who-text" ).hide("fade",{},fadeout_speed);
+		$( "#what-text" ).hide("fade",{},fadeout_speed);
+		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		$( "#who").css("color","#FFFFFF");
+		$( "#what").css("color","#FFFFFF");
+		$( "#where").css("color","#FFFFFF");
+		logo_unity();
 	} )
 	.css(
 		"top","+="+start_anim_offset
@@ -505,24 +525,20 @@
 	.animate({
 		top:"-="+start_anim_offset,
 	},start_anim_speed,animationType);
+
 	delay_anim+=delay_between;
+
     $( "#who" )
 	.click( function( event ) 
 	{
 		$( "#who-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		$( "#who").css("color","#FFFFFF");
+		$( "#what").css("color","#FFFFFF1A");
+		$( "#where").css("color","#FFFFFF1A");
 		who_unity();
-		this.value = "누가";
 	} )
-	.mouseenter(function(){
-		this.value = "누가";
-		}
-	)
-	.mouseleave(function(){
-		this.value = "who";
-		}
-	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
@@ -530,23 +546,18 @@
 	.animate({
 		bottom:"+="+start_anim_offset,
 	},start_anim_speed,animationType);
+
 	delay_anim+=delay_between;
     $( "#what" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
+		$( "#who").css("color","#FFFFFF1A");
+		$( "#what").css("color","#FFFFFF");
+		$( "#where").css("color","#FFFFFF1A");
 		what_unity();
-		this.value = "무엇을";
 	} )
-	.mouseenter(function(){
-		this.value = "무엇을";
-		}
-	)
-	.mouseleave(function(){
-		this.value = "what";
-		}
-	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
@@ -554,22 +565,18 @@
 	.animate({
 		bottom:"+="+start_anim_offset,
 	},start_anim_speed,animationType);
+
 	delay_anim+=delay_between;
     $( "#where" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#who").css("color","#FFFFFF1A");
+		$( "#what").css("color","#FFFFFF1A");
+		$( "#where").css("color","#FFFFFF");
 		where_unity();
 	} )
-	.mouseenter(function(){
-		this.value = "어디서";
-		}
-	)
-	.mouseleave(function(){
-		this.value = "where";
-		}
-	)
 	.css(
 		"bottom","-="+start_anim_offset
 	)
@@ -577,6 +584,7 @@
 	.animate({
 		bottom:"+="+start_anim_offset,
 	},start_anim_speed,animationType);
+
 	delay_anim+=delay_between;
 	$( "#footer")
 	.css(
