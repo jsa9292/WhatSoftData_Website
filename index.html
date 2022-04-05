@@ -188,7 +188,7 @@
 			display: flex;
 			flex-direction:column-reverse;
 			align-items: flex-start;
-			width:calc(50vw-50);
+			width:calc(50vw-100);
 			position:absolute; 
 			bottom:var(--margin); 
 			left: var(--margin);
@@ -257,7 +257,7 @@
 			flex-direction: column-reverse;
 			align-items: flex-start;
 			gap: 0px;
-			width:calc(50vw-50);
+			width:calc(50vw-100);
 			position:absolute; 
 			bottom:100px; 
 			left: 100px;
@@ -274,7 +274,7 @@
 			background-color:var(--clear-background); 
 			cursor:pointer;
 			vertical-align: bottom;
-			height: 90px;
+			height: 113px;
 			}
 			#logo{
 				height:calc(30/1080*100vh); 
@@ -333,7 +333,7 @@
 			cursor:pointer;
 			}
 			.textblock::-webkit-scrollbar {
-			display: none;
+			display: none; /* Safari */
 			}
 		}
     </style>
@@ -351,6 +351,18 @@
 	</div>
 	<ol>
     <div id="who-text" class="textblock">	
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
 	  <h1>about</h1>
 	  <h2>whatsoftdata</h2>
       <p class="ko-text"><b>왓소프트데이타</b>는 수치화로 대변되는 데이타의 인간적 면모를 수집하고 분석하며 질문하는 아트 디자인 콜렉티브입니다. 데이터를 기반으로 사람과 사람, 사람과 사회, 사람과 데이터의 물리적, 사회적 균형과 연결에 대하여 이야기 합니다.
@@ -392,7 +404,19 @@
 	  <p class="eng-text"><b>Techincal Director, Data Scientist</b><br>
 		Jungsu earned Cognitive Science, B.A. at UCLA and Computational and Data Science, M.S. at Chapman University. He seeks an interaction between Cognitive Science and Data Science using gamified psychometrics. His ultimate goal is to create a human-like AI, <b>NOT</b> a conversational AI.​
     </div>
-    <div id="what-text" class="draggable">
+    <div id="what-text" class="textblock">
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
 		<h1>Soft Rx</h1>
 		<h2>about</h2>
 		<p class="ko-text">소프트레시피는 사회적 경험을 게임화하여 예술적 실험으로 재해석합니다. 소프트레시피는 스테이지이며 플랫폼이자 시스템입니다. 방문객은 특정 역할을 맡고 디렉션에 따라 행동하게 됩니다. 방문객은 실험적 경험을 통해 타인, 공간, 그리고 그들이 생성한 소프트 데이타와 서로 연결되어 상호작용하게 됩니다.
@@ -419,7 +443,19 @@
 		<p class="ko-text">한계점을 지나 몽상으로 넘쳐흐르는 경계의 역할을 하는 공감각적 경험. 이 공간은 세월이 지나 사라지겠지만 그전까지 기억을 담는 용기이자 몽상가들의 피난처가 될 것입니다.
 		<p class="eng-text">Let this serve as a threshold spilling over into daydreaming. This house will be demolished, but until then will serve as a vessel for memories and a safe haven for daydreamers. 
 	</div>
-    <div id="where-text" class="draggable">
+    <div id="where-text" class="textblock">
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
 		<h1>contact</h1>
 		<h2>offline</h2>
 		<span class="ko-text"><b>왓소프트데이타 <span class="eng-text">whatsoftdata</b>
@@ -482,6 +518,7 @@
 	} );
 	var revert_delay = 3000;
 	var mouse_over = false;
+	$(".textblock").hide();
 	//initialize draggables hidden
 	$( ".draggable" )
 	.hide()
@@ -553,7 +590,7 @@
     $( "#who" )
 	.click( function( event ) 
 	{
-		$( "#who-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#who-text" ).show("fade",{},fadein_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		$( "#who").css("color","#FFFFFF");
@@ -573,7 +610,7 @@
     $( "#what" ).click( function( event ) 
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#what-text" ).show("fade",{},fadein_speed);
 		$( "#where-text" ).hide("fade",{},fadeout_speed);
 		$( "#who").css("color","#FFFFFF1A");
 		$( "#what").css("color","#FFFFFF");
@@ -593,7 +630,7 @@
 	{
 		$( "#who-text" ).hide("fade",{},fadeout_speed);
 		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).css("top","var(--text-pos-top)").show("fade",{},fadein_speed);
+		$( "#where-text" ).show("fade",{},fadein_speed);
 		$( "#who").css("color","#FFFFFF1A");
 		$( "#what").css("color","#FFFFFF1A");
 		$( "#where").css("color","#FFFFFF");
