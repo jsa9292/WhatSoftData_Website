@@ -688,6 +688,12 @@
 			var delay_anim=0;
 			var animationType = "easeOutBack";
 	
+			$("#loading-symbol").animate({
+				top:"-="+start_anim_offset,
+			},start_anim_speed,animationType);
+			$("#unity-canvas").animate({
+				background:"rgb(0,0,0)"
+			},start_anim_speed);
 			$( "#logo" )
 			.delay(delay_anim)
 			.animate({
