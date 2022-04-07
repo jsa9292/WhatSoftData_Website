@@ -108,13 +108,15 @@
 		//	  clearInterval(counter);return;
 		//	}
 		//}, 10);
+		function lerp(a, b, t) {
+		  return (1 - t) * a + t * b;
+		}
 		createUnityInstance(canvas, config, (progress) => {
           //progressBarFull.style.width = 100 * progress + "%";
 		  //min_loading = Math.min(progress,count/countMax);
-		  min_loading=(1-progress);
-		  var r = parseInt(236*min_loading);
-		  var g = parseInt(52*min_loading);
-		  var b = parseInt(0*min_loading);
+		  var r = parseInt(lerp(236,0,progress));
+		  var g = parseInt(lerp(52,71,progress));
+		  var b = parseInt(lerp(0,199,progress));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
 		}).then((unityInstance) => {
           loadingBar.style.display = "none";
@@ -239,23 +241,25 @@
 			vertical-align: bottom; 
 			}
 			#logo{
-				height:calc(30/1080*100vh); 
-				right:30px; 
-				top:30px;
+				height:15px; 
+				right: 30px; 
+				top:141px;
+				transform-origin: top right;
+				transform: rotate(90deg);
 			}
 			#symbol{
-				height:calc(30/1080*100vh); 
+				height:15px; 
 				left:30px; 
 				top:30px;
 			}
 			.footer{
 			color:white; 
 			position:absolute; 
-			transform: rotate(-90deg);
-			transform-pivot:
-			left:50vw;
-			right:30px; 
+			transform-origin:bottom right;
+			transform: rotate(90deg);
+			right:44px; 
 			bottom: 30px; 
+			height: 14px;
 			text-align:right; 
 			vertical-align: bottom; 
 			font:normal normal 300 7px/7px NeueHaasDisplayRoman;
