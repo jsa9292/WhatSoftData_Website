@@ -37,76 +37,9 @@
 		--screen-scale: min(calc(100vw/1920),calc(100vh/1080));
 		--margin: 50px;
 		}
-		.ko-text{
-		color:white; 
-		font-family:SUIT-Variable; 
-		font-weight:ExtraBold; 
-		font-size: 14.5px;
-		line-height: 20px;
-		text-align: left;
-		margin-top: 10px;
-		margine-bottom:15px;
-		letter-spacing: 0px;
-		}
-		.eng-text{
-		color:#FFFFFF80; 
-		font-family:var(--text-en-font-family); 
-		font-weight: medium; 
-		font-size:14.5px;
-		line-height: 20px;
-		text-align: left;
-		hyphens: auto;
-		letter-spacing: 0px;
-		margin-top: 10px;
-		margin-bottom:15px;
-		}
-		.ko-job{
-		text-align: left;
-		font: normal normal normal 15px/20px SUIT-Variable;
-		font-weight:meidum;
-		letter-spacing: 0px;
-		color: #FFFFFF;
-		opacity: 1;
-		}
-		.en-job{
-		font: normal normal normal 15px/20px NeueHaasDisplayRoman;
-		letter-spacing: 0px;
-		color: #FFFFFF80;
-		}
 		table,tr,th{
 		margin: 0px;
 		padding: 0px;
-		}
-		.expander{
-			font: normal normal normal 20px/20px NeueHaas65;
-			font-weight: medium;
-
-		}
-		h1{
-			text-align: left;
-			font: normal normal normal 35px/20px NeueHaas65;
-			font-weight: medium;
-			letter-spacing: 0px;
-			color: #FFFFFF;
-			opacity: 1;
-			margin-bottom: 20px;
-			margin-top: 20px;
-		}
-		h2{
-			text-align: left;
-			font: italic normal normal 35px/20px NeueHaasDisplayRoman;
-			font-weight: light;
-			letter-spacing: 0px;
-			color: #FD5000;
-			opacity: 1;
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
-		.emailText{
-			text-align: left;
-			font: normal normal bold 15px/20px NeueHaasDisplayRoman;
-			letter-spacing: 0px;
-			color: #FFFFFF;
 		}
 		#loading-symbol{
 		position: absolute; 
@@ -194,6 +127,74 @@
 			.textbuffer{
 			height:0px;
 			}
+			.eng-text{
+			color:#FFFFFF80; 
+			font-family:var(--text-en-font-family); 
+			font-weight: medium; 
+			font-size:11px;
+			line-height: 15px;
+			text-align: left;
+			hyphens: auto;
+			letter-spacing: 0px;
+			margin-top: 10px;
+			margin-bottom:15px;
+			}
+			.ko-text{
+			color:white; 
+			font-family:SUIT-Variable; 
+			font-weight:ExtraBold; 
+			font-size: 11px;
+			line-height: 15px;
+			text-align: left;
+			margin-top: 10px;
+			margine-bottom:15px;
+			letter-spacing: 0px;
+			}
+			.ko-job{
+			text-align: left;
+			font: normal normal normal 11px/20px SUIT-Variable;
+			font-weight:meidum;
+			letter-spacing: 0px;
+			color: #FFFFFF;
+			opacity: 1;
+			}
+			.en-job{
+			font: normal normal normal 11px/20px NeueHaasDisplayRoman;
+			letter-spacing: 0px;
+			color: #FFFFFF80;
+			}
+			
+			.expander{
+				font: normal normal normal 11px/20px NeueHaas65;
+				font-weight: medium;
+
+			}
+			h1{
+				text-align: left;
+				font: normal normal normal 20px/20px NeueHaas65;
+				font-weight: medium;
+				letter-spacing: 0px;
+				color: #FFFFFF;
+				opacity: 1;
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
+			h2{
+				text-align: left;
+				font: italic normal normal 20px/20px NeueHaasDisplayRoman;
+				font-weight: light;
+				letter-spacing: 0px;
+				color: #FD5000;
+				opacity: 1;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			.emailText{
+				text-align: left;
+				font: normal normal bold 11px/20px NeueHaasDisplayRoman;
+				letter-spacing: 0px;
+				color: #FFFFFF;
+			}
 		}
 		@media only screen and (orientation: landscape) {
 			
@@ -266,6 +267,64 @@
 			}
 			.textbuffer{
 			height:300px;
+			}
+			
+			.eng-text{
+			color:#FFFFFF80; 
+			font-family:var(--text-en-font-family); 
+			font-weight: medium; 
+			font-size:14.5px;
+			line-height: 20px;
+			text-align: left;
+			hyphens: auto;
+			letter-spacing: 0px;
+			margin-top: 10px;
+			margin-bottom:15px;
+			}
+			.ko-job{
+			text-align: left;
+			font: normal normal normal 15px/20px SUIT-Variable;
+			font-weight:meidum;
+			letter-spacing: 0px;
+			color: #FFFFFF;
+			opacity: 1;
+			}
+			.en-job{
+			font: normal normal normal 15px/20px NeueHaasDisplayRoman;
+			letter-spacing: 0px;
+			color: #FFFFFF80;
+			}
+			
+			.expander{
+				font: normal normal normal 20px/20px NeueHaas65;
+				font-weight: medium;
+
+			}
+			h1{
+				text-align: left;
+				font: normal normal normal 35px/20px NeueHaas65;
+				font-weight: medium;
+				letter-spacing: 0px;
+				color: #FFFFFF;
+				opacity: 1;
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
+			h2{
+				text-align: left;
+				font: italic normal normal 35px/20px NeueHaasDisplayRoman;
+				font-weight: light;
+				letter-spacing: 0px;
+				color: #FD5000;
+				opacity: 1;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			.emailText{
+				text-align: left;
+				font: normal normal bold 15px/20px NeueHaasDisplayRoman;
+				letter-spacing: 0px;
+				color: #FFFFFF;
 			}
 		}
     </style>
