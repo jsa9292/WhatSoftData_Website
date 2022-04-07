@@ -262,6 +262,7 @@
 		}
     </style>
 	<img id = "loading-symbol"src="images/symbol.png" style="position: absolute; display:block; height:70px; left:50vw; top:50vh; transform:translate(-79px,-35px); filter:brightness(100%)"></img>
+	<img id = "loading-logo"src="images/logo.png" style="position: absolute; display:block; height:70px; left:50vw; top:50vh; transform:translate(-259px,-35px); filter:brightness(0%)"></img>
 	
     <input id="logo" class="button" type="image" src="images/logo.png">
     <input id="symbol" class="button" type="image" src="images/symbol.png">
@@ -590,7 +591,13 @@
 		).animate({
 			top:"-="+start_anim_offset,
 		},start_anim_speed,animationType);
-		//once loading is done
+		
+		$("#loading-logo")
+		.css(
+			"top","+="+start_anim_offset,
+		);
+
+
 		$(".textblock").hide();
 		$( "#logo" )
 		.click( function( event ) 
@@ -691,6 +698,13 @@
 			$("#loading-symbol").animate({
 				top:"-="+start_anim_offset,
 			},start_anim_speed,animationType);
+			
+			$("#loading-logo")
+			.animate({
+				top:"-="+start_anim_offset,
+			},start_anim_speed,animationType)
+			.delay(1000);
+
 			$("#unity-canvas").animate({
 				background:"rgb(0,0,0)"
 			},start_anim_speed);
