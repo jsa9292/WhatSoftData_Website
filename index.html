@@ -11,7 +11,7 @@
     <script src="jquery/jquery-ui.min.js"></script>
 	<script src="jquery.ui.touch-punch.min.js"></script>
   </head>
-  <body style="text-align: center; margin:0; padding:0; overflow: hidden; ">
+  <body style="text-align: center; margin:0; padding:0; overflow: hidden; background = black; ">
     <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display:block; "></canvas>
       <div id="unity-loading-bar">
@@ -53,7 +53,7 @@
 		color:#FFFFFF80; 
 		font-family:var(--text-en-font-family); 
 		font-weight: medium; 
-		font-size:1vw;
+		font-size:14.5px;
 		line-height: 20px;
 		text-align: left;
 		hyphens: auto;
@@ -691,9 +691,7 @@
 			var delay_anim=1500;
 			var animationType = "easeOutBack";
 	
-			$("#loading-symbol").animate({
-				top:"-="+start_anim_offset,
-			},start_anim_speed,animationType);
+			$("#loading-symbol").hide();
 
 			$("#unity-canvas").animate({
 				background:"rgb(0,0,0)"
@@ -753,8 +751,6 @@
 				$(this).text("+");
 				}
 			})
-        }).catch((message) => {
-          //alert(message);
         });
       };
       document.body.appendChild(script);
