@@ -22,119 +22,6 @@
       </div>
       <div id="unity-warning" style="background: rgba(0,0,0,0)"> </div>
     </div>
-	<img id = "loading-symbol"src="images/symbol.png" style="position: absolute; display:block; height:70px; left:50vw; top:50vh; transform:translate(-79px,-35px); filter:brightness(100%)"></img>
-    <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-	  var loadingSymbol =  document.querySelector("#loading-symbol");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
-
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-	  
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = "height:0px; overflow:hidden";
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
-
-      var buildUrl = "Build";
-	  var build_forlder_target ="/WhatSoftData_Website";
-	  var compression_ending = ".unityweb";
-      var loaderUrl = buildUrl + build_forlder_target +".loader.js";
-      var config = {
-        dataUrl: buildUrl + build_forlder_target+".data"+compression_ending,
-        frameworkUrl: buildUrl + build_forlder_target+".framework.js"+compression_ending,
-        codeUrl: buildUrl + build_forlder_target +".wasm"+compression_ending,
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "whatsoftdata",
-        productName: "website",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
-
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-
-        canvas.style.width = window.innerWidth + 'px';
-        canvas.style.height = window.innerHeight + 'px';
-      }
-
-      loadingBar.style.display = "none";
-
-      config.devicePixelRatio = 2.5;
-      var script = document.createElement("script");
-	  var unity_isLive = false;
-	  var unity = null;
-	  function lerp(a, b, t) {
-	  	  return (1 - t) * a + t * b;
-	  }
-      script.src = loaderUrl;
-      script.onload = () => {
-		//var count = 0;
-		//var countMax = 400;
-	    //var counter = setInterval(function(){
-		//	count++;
-		//	if(count>countMax){
-		//	  clearInterval(counter);return;
-		//	}
-		//}, 10);
-		createUnityInstance(canvas, config, (progress) => {
-          //progressBarFull.style.width = 100 * progress + "%";
-		  //min_loading = Math.min(progress,count/countMax);
-		  var r = parseInt(lerp(236,0,progress));
-		  var g = parseInt(lerp(52,71,progress));
-		  var b = parseInt(lerp(0,199,progress));
-		  canvas.style.background = "rgb("+r+","+g+","+b+")";
-		  loadingSymbol.style.filter = "brightness("+100*(1-progress)+"%)";
-		}).then((unityInstance) => {
-          loadingBar.style.display = "none";
-		  unity_isLive = true;
-		  unity = unityInstance;
-		  loadingSymbol.style.height = "0px";
-        }).catch((message) => {
-          //alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
-
-	<!-- Text part of the page -->
 	<style>
 		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
 		@font-face {font-family: NeueHaas65; src: url('fonts/NeueHaas65.ttf');}
@@ -374,6 +261,8 @@
 			}
 		}
     </style>
+	<img id = "loading-symbol"src="images/symbol.png" style="position: absolute; display:block; height:70px; left:50vw; top:50vh; transform:translate(-79px,-35px); filter:brightness(100%)"></img>
+	
     <input id="logo" class="button" type="image" src="images/logo.png">
     <input id="symbol" class="button" type="image" src="images/symbol.png">
 	<div id="footer" class="footer" >
@@ -577,201 +466,307 @@
 		<div class="textbuffer"></div>
     </div>
 	</ol>
+
     <script>
-	//Unity functions placeholders
-	function logo_unity(){
-		console.log("logo");
-		if(unity_isLive) {
-		  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
-		}
-		console.log("-1,1");
-	}
-	function symbol_unity(){
-		console.log("symbol");
-		if(unity_isLive) unity.SendMessage('GraphicsManager', 'EasterEgg');
-	}
-	function who_unity(){
-		console.log("who");
-		if(unity_isLive) {
-		  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
-		}
-		console.log("0,0");
-	}
-	function what_unity(){
-		console.log("what");
-		if(unity_isLive) {
-		  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
-		}
-		console.log("2,0");
-	}
-	function where_unity(){
-		console.log("where");
-		if(unity_isLive) {
-		  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
-		  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
-		}
-		console.log("3,0");
-	}
+	
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+	  var loadingSymbol =  document.querySelector("#loading-symbol");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
 
-	$( function() {
-	$( "#accordion" ).accordion({
-		collapsible: true
-	});
-	} );
-	var revert_delay = 3000;
-	var mouse_over = false;
-	$(".textblock").hide();
-	//initialize draggables hidden
-	$( ".draggable" )
-	.hide()
-	.draggable({
-		axis: "y",
-		revert: false,
-		revertDuration: 1000,
-		scroll: false,
-		helper: function(event, ui){
-            return $('<div></div>').clone().css('opacity',0)
-        },
-        create: function(){
-            // When the draggable is created, save its starting
-            // position into a data attribute, so we know where we
-            // need to revert to.
-            var $this = $(this);
-            $this.data('starttop',$this.position().top);
-        },
-        drag: function(event, ui){
-            // During dragging, animate the original object to
-            // follow the invisible helper with custom easing.
-            $(this).stop().animate({
-                top: "+="+(ui.helper.position().top - $(this).position().top)*3
-            },700,'easeOutCirc');
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+	  
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
         }
-	});
-	//each button actions
-	var fadein_speed = 200;
-	var fadeout_speed = 200;
-	var start_anim_speed = 1000;
-	var start_anim_offset = 1000;
-	var delay_between=300;
-	var delay_anim=0;
-	var animationType = "easeOutBack";
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = "height:0px; overflow:hidden";
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
 
-    $( "#logo" ).click( function( event ) 
-	{
-		symbol_unity();
-	} )
-	.css(
-		"top","+="+start_anim_offset,
-	)
-	.delay(delay_anim)
-	.animate({
-		top:"-="+start_anim_offset,
-	},start_anim_speed,animationType);
+      var buildUrl = "Build";
+	  var build_forlder_target ="/WhatSoftData_Website";
+	  var compression_ending = ".unityweb";
+      var loaderUrl = buildUrl + build_forlder_target +".loader.js";
+      var config = {
+        dataUrl: buildUrl + build_forlder_target+".data"+compression_ending,
+        frameworkUrl: buildUrl + build_forlder_target+".framework.js"+compression_ending,
+        codeUrl: buildUrl + build_forlder_target +".wasm"+compression_ending,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "whatsoftdata",
+        productName: "website",
+        productVersion: "0.1",
+        showBanner: unityShowBanner,
+      };
 
-	delay_anim+=delay_between;
-    $( "#symbol" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		$( "#who").css("color","#FFFFFF");
-		$( "#what").css("color","#FFFFFF");
-		$( "#where").css("color","#FFFFFF");
-		logo_unity();
-	} )
-	.css(
-		"top","+="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		top:"-="+start_anim_offset,
-	},start_anim_speed,animationType);
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
 
-	delay_anim+=delay_between;
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
 
-    $( "#who" )
-	.click( function( event ) 
-	{
-		$( "#who-text" ).show("fade",{},fadein_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		$( "#who").css("color","#FFFFFF");
-		$( "#what").css("color","#FFFFFF1A");
-		$( "#where").css("color","#FFFFFF1A");
-		who_unity();
-	} )
-	.css(
-		"bottom","-="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		bottom:"+="+start_anim_offset,
-	},start_anim_speed,animationType);
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
 
-	delay_anim+=delay_between;
-    $( "#what" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).show("fade",{},fadein_speed);
-		$( "#where-text" ).hide("fade",{},fadeout_speed);
-		$( "#who").css("color","#FFFFFF1A");
-		$( "#what").css("color","#FFFFFF");
-		$( "#where").css("color","#FFFFFF1A");
-		what_unity();
-	} )
-	.css(
-		"bottom","-="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		bottom:"+="+start_anim_offset,
-	},start_anim_speed,animationType);
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
 
-	delay_anim+=delay_between;
-    $( "#where" ).click( function( event ) 
-	{
-		$( "#who-text" ).hide("fade",{},fadeout_speed);
-		$( "#what-text" ).hide("fade",{},fadeout_speed);
-		$( "#where-text" ).show("fade",{},fadein_speed);
-		$( "#who").css("color","#FFFFFF1A");
-		$( "#what").css("color","#FFFFFF1A");
-		$( "#where").css("color","#FFFFFF");
-		where_unity();
-	} )
-	.css(
-		"bottom","-="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		bottom:"+="+start_anim_offset,
-	},start_anim_speed,animationType);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      }
 
-	delay_anim+=delay_between;
-	$( "#footer")
-	.css(
-		"bottom","-="+start_anim_offset
-	)
-	.delay(delay_anim)
-	.animate({
-		bottom:"+="+start_anim_offset,
-	},start_anim_speed,animationType);
+      loadingBar.style.display = "none";
 
-	$('.expander')
-	.text("+")
-	.click(function (event){
-		var d = $(this).prev('div');
-		if(d.css("height")== "0px"){
-		d.css("height","auto");
-		$(this).text("-");
+	  function logo_unity(){
+			console.log("logo");
+			if(unity_isLive) {
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
+			  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
+			}
+			console.log("-1,1");
 		}
-		else{
-		d.css("height","0px");
-		$(this).text("+");
+		function symbol_unity(){
+			console.log("symbol");
+			if(unity_isLive) unity.SendMessage('GraphicsManager', 'EasterEgg');
 		}
-	})
+		function who_unity(){
+			console.log("who");
+			if(unity_isLive) {
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+			}
+			console.log("0,0");
+		}
+		function what_unity(){
+			console.log("what");
+			if(unity_isLive) {
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
+			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+			}
+			console.log("2,0");
+		}
+		function where_unity(){
+			console.log("where");
+			if(unity_isLive) {
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
+			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
+			}
+			console.log("3,0");
+		}
+	    function lerp(a, b, t) {
+	  	  return (1 - t) * a + t * b;
+	    }
+
+		var start_anim_speed = 1000;
+		var start_anim_offset = 1000;
+		var animationType = "easeOutBack";
+		//loading
+		$("#loading-symbol")
+		.css(
+			"top","+="+start_anim_offset,
+		).animate({
+			top:"-="+start_anim_offset,
+		},start_anim_speed,animationType);
+		//once loading is done
+		$(".textblock").hide();
+		$( "#logo" )
+		.click( function( event ) 
+		{
+			symbol_unity();
+		} )
+		.css(
+				"top","+="+start_anim_offset,
+		);
+
+		$( "#symbol" )
+		.click( function( event ) 
+		{
+			$( "#who-text" ).hide("fade",{},fadeout_speed);
+			$( "#what-text" ).hide("fade",{},fadeout_speed);
+			$( "#where-text" ).hide("fade",{},fadeout_speed);
+			$( "#who").css("color","#FFFFFF");
+			$( "#what").css("color","#FFFFFF");
+			$( "#where").css("color","#FFFFFF");
+			logo_unity();
+		} )
+		.css(
+			"top","+="+start_anim_offset
+		);
+
+		$( "#who" )
+		.click( function( event ) 
+		{
+			$( "#who-text" ).show("fade",{},fadein_speed);
+			$( "#what-text" ).hide("fade",{},fadeout_speed);
+			$( "#where-text" ).hide("fade",{},fadeout_speed);
+			$( "#who").css("color","#FFFFFF");
+			$( "#what").css("color","#FFFFFF1A");
+			$( "#where").css("color","#FFFFFF1A");
+			who_unity();
+		} )
+		.css(
+			"bottom","-="+start_anim_offset
+		);
+
+		$( "#what" ).click( function( event ) 
+		{
+			$( "#who-text" ).hide("fade",{},fadeout_speed);
+			$( "#what-text" ).show("fade",{},fadein_speed);
+			$( "#where-text" ).hide("fade",{},fadeout_speed);
+			$( "#who").css("color","#FFFFFF1A");
+			$( "#what").css("color","#FFFFFF");
+			$( "#where").css("color","#FFFFFF1A");
+			what_unity();
+		} )
+		.css(
+			"bottom","-="+start_anim_offset
+		);
+
+		$("#where").click( function( event ) 
+		{
+			$( "#who-text" ).hide("fade",{},fadeout_speed);
+			$( "#what-text" ).hide("fade",{},fadeout_speed);
+			$( "#where-text" ).show("fade",{},fadein_speed);
+			$( "#who").css("color","#FFFFFF1A");
+			$( "#what").css("color","#FFFFFF1A");
+			$( "#where").css("color","#FFFFFF");
+			where_unity();
+		} )
+		.css(
+			"bottom","-="+start_anim_offset
+		);
+
+		$( "#footer")
+		.css(
+			"bottom","-="+start_anim_offset
+		);
+
+      config.devicePixelRatio = 2.5;
+      var script = document.createElement("script");
+	  var unity_isLive = false;
+	  var unity = null;
+      script.src = loaderUrl;
+      script.onload = () => {
+		//var count = 0;
+		//var countMax = 400;
+	    //var counter = setInterval(function(){
+		//	count++;
+		//	if(count>countMax){
+		//	  clearInterval(counter);return;
+		//	}
+		//}, 10);
+		createUnityInstance(canvas, config, (progress) => {
+          //progressBarFull.style.width = 100 * progress + "%";
+		  //min_loading = Math.min(progress,count/countMax);
+		  var r = parseInt(lerp(236,0,progress));
+		  var g = parseInt(lerp(52,71,progress));
+		  var b = parseInt(lerp(0,199,progress));
+		  canvas.style.background = "rgb("+r+","+g+","+b+")";
+		  loadingSymbol.style.filter = "brightness("+100*(1-progress)+"%)";
+		}).then((unityInstance) => {
+          loadingBar.style.display = "none";
+		  unity_isLive = true;
+		  unity = unityInstance;
+		  loadingSymbol.style.height = "0px";
+		  
+			var revert_delay = 3000;
+			var mouse_over = false;
+			//each button actions
+			var fadein_speed = 200;
+			var fadeout_speed = 200;
+			var start_anim_speed = 1000;
+			var start_anim_offset = 1000;
+			var delay_between=300;
+			var delay_anim=0;
+			var animationType = "easeOutBack";
+	
+			$( "#logo" )
+			.delay(delay_anim)
+			.animate({
+				top:"-="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			delay_anim+=delay_between;
+			$( "#symbol" )
+			.delay(delay_anim)
+			.animate({
+				top:"-="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			delay_anim+=delay_between;
+			$( "#who" )
+			.delay(delay_anim)
+			.animate({
+				bottom:"+="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			delay_anim+=delay_between;
+			$( "#what" )
+			.delay(delay_anim)
+			.animate({
+				bottom:"+="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			delay_anim+=delay_between;
+			$( "#where" )
+			.delay(delay_anim)
+			.animate({
+				bottom:"+="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			delay_anim+=delay_between;
+			$( "#footer")
+			.delay(delay_anim)
+			.animate({
+				bottom:"+="+start_anim_offset,
+			},start_anim_speed,animationType);
+
+			$('.expander')
+			.text("+")
+			.click(function (event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				}
+			})
+        }).catch((message) => {
+          //alert(message);
+        });
+      };
+      document.body.appendChild(script);
     </script>
+
+	<!-- Text part of the page -->
+	
   </body>
 </html>
