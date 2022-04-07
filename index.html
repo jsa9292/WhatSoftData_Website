@@ -20,7 +20,7 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
+      <div id="unity-warning" style="background: rgba(0,0,0,0)"> </div>
     </div>
     <script>
       var container = document.querySelector("#unity-container");
@@ -43,7 +43,7 @@
         var div = document.createElement('div');
         div.innerHTML = msg;
         warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        if (type == 'error') div.style = "height:0px; overflow:hidden";
         else {
           if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
           setTimeout(function() {
@@ -196,7 +196,7 @@
 			color: #FFFFFF;
 			opacity: 1;
 			margin-bottom: 20px;
-			margin-top: 60px;
+			margin-top: 20px;
 		}
 		h2{
 			text-align: left;
@@ -221,50 +221,73 @@
 			align-items: flex-start;
 			width:calc(50vw-100);
 			position:absolute; 
-			bottom:var(--margin); 
-			left: var(--margin);
+			bottom:30px; 
+			left: 30px;
 			text-align:left; 
 			vertical-align:bottom;
 			}
 		   .button{ 
 			color:white; 
-			font-family:NeueHaas65; 
-			font-weight:500; 
-			font-size:calc(240/1980*100vw); 
+			font: normal normal normal 50px/60px NeueHaas65;
+			font-weight:medium;
 			position: absolute; 
 			border:0px; 
 			margin:0px; 
 			background-color:var(--clear-background); 
 			cursor:pointer;
-			line-height:calc(240/1980*100vw);
+			line-height: 50px;
 			vertical-align: bottom; 
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-		     -khtml-user-select: none; /* Konqueror HTML */
-			   -moz-user-select: none; /* Old versions of Firefox */
-				-ms-user-select: none; /* Internet Explorer/Edge */
-					user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+			}
+			#logo{
+				height:calc(30/1080*100vh); 
+				right:30px; 
+				top:30px;
+			}
+			#symbol{
+				height:calc(30/1080*100vh); 
+				left:30px; 
+				top:30px;
 			}
 			.footer{
 			color:white; 
 			position:absolute; 
-			transform-origin: bottom left;
 			transform: rotate(-90deg);
-			left:35px;
-			bottom: var(--margin); 
-			text-align:left; 
+			transform-pivot:
+			left:50vw;
+			right:30px; 
+			bottom: 30px; 
+			text-align:right; 
 			vertical-align: bottom; 
-			font-family:var(--text-en-font-family); 
-			font-weight:var(--text-en-font-weight); 
-			font-size:.5em;
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-		     -khtml-user-select: none; /* Konqueror HTML */
-			   -moz-user-select: none; /* Old versions of Firefox */
-				-ms-user-select: none; /* Internet Explorer/Edge */
-					user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+			font:normal normal 300 7px/7px NeueHaasDisplayRoman;
+			}
+			.textblock{
+			overflow-y:scroll;
+			-ms-overflow-style: none;  /* IE and Edge */
+			scrollbar-width: none;  /* Firefox */
+			color:white; 
+			position: absolute; 
+			left:20px;
+			right:20px;
+			top:40vh;
+			height: 40vh;
+			font-size:11px;
+			padding: 0px; 
+			padding-left:10px;
+			padding-right:10px;
+			border:0px; 
+			margin:0px; 
+			background-color:var(--clear-background); 
+			text-align: left;
+			line-height:28px;
+			text-align: justify;
+			  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%,black 95%, transparent 100%);
+			  mask-image: linear-gradient(to bottom, transparent 0%, black 5%,black 95%, transparent 100%);
+			}
+			.textblock::-webkit-scrollbar {
+			display: none; /* Safari */
+			}
+			.textbuffer{
+			line-height:0px;
 			}
 		}
 		@media only screen and (orientation: landscape) {
@@ -336,6 +359,9 @@
 			.textblock::-webkit-scrollbar {
 			display: none; /* Safari */
 			}
+			.textbuffer{
+			line-height:300px;
+			}
 		}
     </style>
     <input id="logo" class="button" type="image" src="images/logo.png">
@@ -352,7 +378,7 @@
 	</div>
 	<ol>
     <div id ="who-text" class="textblock">	
-	  <div style="height: 300px"></div>
+	  <div class="textbuffer"></div>
 
 	  <div>
 	  <h1>about</h1>
@@ -456,11 +482,11 @@
 	  </p>
 	  </div>
 	  <span class="expander"></span>
-	  <div style="height: 300px"></div>
+	  <div class="textbuffer"></div>
 	</div>
 
     <div id="what-text" class="textblock">
-	  <div style="height: 300px"></div>
+	  <div class="textbuffer"></div>
 	  <h1>Soft Rx</h1>
 	  <h2>about</h2>
 	  <p class="ko-text">소프트레시피는 사회적 경험을 게임화하여 예술적 실험으로 재해석합니다. 소프트레시피는 스테이지이며 플랫폼이자 시스템입니다. 방문객은 특정 역할을 맡고 디렉션에 따라 행동하게 됩니다. 방문객은 실험적 경험을 통해 타인, 공간, 그리고 그들이 생성한 소프트 데이타와 서로 연결되어 상호작용하게 됩니다.
@@ -499,10 +525,10 @@
 	  </p>
 	  <p class="eng-text">Let this serve as a threshold spilling over into daydreaming. This house will be demolished, but until then will serve as a vessel for memories and a safe haven for daydreamers. 
 	  </p>
-	  <div style="height: 300px"></div>
+	  <div class="textbuffer"></div>
 	</div>
     <div id="where-text" class="textblock">
-		<div style="height: 300px"></div>
+		<div class="textbuffer"></div>
 		<h1>contact</h1>
 		<h2>offline</h2>
 		<table style="width:100%; line-height:0px">
@@ -538,7 +564,7 @@
 		www.whatsoftdata.com<br>
 		info@whatsoftdata.com
 		</p>
-		<div style="height: 300px"></div>
+		<div class="textbuffer"></div>
     </div>
 	</ol>
     <script>
