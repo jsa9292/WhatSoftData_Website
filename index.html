@@ -357,49 +357,9 @@
     </style>
 	<div>
 		<img id = "loading-symbol"src="images/symbol.png"></img>
-
-		<!-- * 카카오맵 - 지도퍼가기 -->
-		<!-- 1. 지도 노드 -->
-		<div id="daumRoughmapContainer1649388252829" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-
-		<!--
-			2. 설치 스크립트
-			* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-		-->
-		<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-		<!-- 3. 실행 스크립트 -->
-		<script charset="UTF-8">
-			new daum.roughmap.Lander({
-				"timestamp" : "1649388252829",
-				"key" : "29rsm",
-				"mapWidth" : "320",
-				"mapHeight" : "240"
-			}).render();
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-				mapOption = { 
-					center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-					level: 3 // 지도의 확대 레벨
-				};
-
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-			// 지도를 표시하는 div 크기를 변경하는 함수입니다
-			function resizeMap(w, h) {
-				var mapContainer = document.getElementById('map');
-				mapContainer.style.width = w;
-				mapContainer.style.height = h;
-			}
-
-			function relayout() {    
-    
-				// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-				// 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-				// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-				map.relayout();
-			}
-		</script>
-
+		<div style="position: relative; display:inline-block; top:65px; overflow:hidden; height:30vh">
+		<div style="font:normal normal 400 12px/normal dotum, sans-serif; width:320px; height:272px; color:#333; position:relative"><div style="height: 240px;"><a href="https://map.kakao.com/?urlX=499241.0&amp;urlY=1107720.0&amp;name=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EB%8C%80%EB%A1%9C30%EA%B8%B8%2027-3&amp;map_type=TYPE_MAP&amp;from=roughmap" target="_blank"><img class="map" src="http://t1.daumcdn.net/roughmap/imgmap/cec2f9819a653c68ec020a9131eb4165bae0c7a2af5502b56a13a977943937ca" style="border:1px solid #ccc;" width="318px" height="238px"></a></div><div style="overflow: hidden; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0px 0px 2px 2px; background-color: rgb(249, 249, 249);"><a href="https://map.kakao.com" target="_blank" style="float: left;"><img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" alt="카카오맵" style="display:block;width:72px;height:16px" width="72" height="16"></a><div style="float: right; position: relative; top: 1px; font-size: 11px;"><a target="_blank" href="https://map.kakao.com/?from=roughmap&amp;eName=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EB%8C%80%EB%A1%9C30%EA%B8%B8%2027-3&amp;eX=499241.0&amp;eY=1107720.0" style="float:left;height:15px;padding-top:1px;line-height:15px;color:#000;text-decoration: none;">길찾기</a></div></div></div>
+		</div>
 		<input id="logo" class="button" type="image" src="images/logo.png">
 		<input id="symbol" class="button" type="image" src="images/symbol.png">
 		<div id="footer" class="footer" >
@@ -672,8 +632,6 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
       }
-	  
-		
 		var fadein_speed = 200;
 		var fadeout_speed = 200;
 		var start_anim_speed = 1000;
