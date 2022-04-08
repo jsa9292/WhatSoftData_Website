@@ -13,25 +13,6 @@
     <script src="jquery/external/jquery/jquery.js"></script>
     <script src="jquery/jquery-ui.min.js"></script>
   </head>
-	<!-- * 카카오맵 - 지도퍼가기 -->
-	<!-- 1. 지도 노드 -->
-	<div id="daumRoughmapContainer1649382130886" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-
-	<!--
-		2. 설치 스크립트
-		* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-	-->
-	<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-	<!-- 3. 실행 스크립트 -->
-	<script charset="UTF-8">
-		new daum.roughmap.Lander({
-			"timestamp" : "1649382130886",
-			"key" : "29rqk",
-			"mapWidth" : "320",
-			"mapHeight" : "240"
-		}).render();
-	</script>
   <body style="text-align: center; margin:0; padding:0; overflow: hidden; background-color: black;">
     <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" width=device-width height= window.innerHeight style="width: 100vw; height: 100vh; display: inline block; "></canvas>
@@ -72,6 +53,7 @@
 		transform:translate(-79px,-35px); 
 		filter:brightness(100%);
 		}
+
 		@media only screen and (orientation: portrait) {
 			#menu{
 			display: flex;
@@ -363,6 +345,25 @@
 	<div>
 		<img id = "loading-symbol"src="images/symbol.png"></img>
 		
+		<!-- * 카카오맵 - 지도퍼가기 -->
+		<!-- 1. 지도 노드 -->
+		<div id="daumRoughmapContainer1649382130886" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+		<!--
+			2. 설치 스크립트
+			* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+		-->
+		<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+		<!-- 3. 실행 스크립트 -->
+		<script charset="UTF-8">
+			new daum.roughmap.Lander({
+				"timestamp" : "1649382130886",
+				"key" : "29rqk",
+				"mapWidth" : "320",
+				"mapHeight" : "240"
+			}).render();
+		</script>
 		<input id="logo" class="button" type="image" src="images/logo.png">
 		<input id="symbol" class="button" type="image" src="images/symbol.png">
 		<div id="footer" class="footer" >
@@ -635,13 +636,19 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
       }
+	  
+		
+		var fadein_speed = 200;
+		var fadeout_speed = 200;
+		var start_anim_speed = 1000;
+		var start_anim_offset = 1000;
+		var animationType = "easeOutBack";
 
-
-	  function logo_unity(){
+		function logo_unity(){
 			console.log("logo");
 			if(unity_isLive) {
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
-			  unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
+				unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
+				unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 			}
 			console.log("-1,1");
 		}
@@ -668,7 +675,7 @@
 		function where_unity(){
 			console.log("where");
 			if(unity_isLive) {
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
+			  $("#daumRoughmapContainer1649382130886").show("fade",{},fadein_speed);
 			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 			}
 			console.log("3,0");
@@ -676,15 +683,10 @@
 	    function lerp(a, b, t) {
 	  	  return (1 - t) * a + t * b;
 	    }
-		
-		var fadein_speed = 200;
-		var fadeout_speed = 200;
-		var start_anim_speed = 1000;
-		var start_anim_offset = 1000;
-		var animationType = "easeOutBack";
 
 
 		$(".textblock").hide();
+		$("#daumRoughmapContainer1649382130886").hide();
 		$( "#logo" )
 		.click( function( event ) 
 		{
