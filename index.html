@@ -348,7 +348,6 @@
 				color: #FFFFFF;
 			}
 			#daumRoughmapContainer1649382130886{
-			position:absolute;
 			display: inline-block;
 			text-align:center;
 			right:100px;
@@ -661,6 +660,7 @@
 		function logo_unity(){
 			console.log("logo");
 			if(unity_isLive) {
+			    $("#daumRoughmapContainer1649382130886").hide("fade",{},fadeout_speed);
 				unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
 				unity.SendMessage('GraphicsManager', 'ParticleToggle',1);
 			}
@@ -673,6 +673,7 @@
 		function who_unity(){
 			console.log("who");
 			if(unity_isLive) {
+			  $("#daumRoughmapContainer1649382130886").hide("fade",{},fadeout_speed);
 			  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
 			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 			}
@@ -681,6 +682,7 @@
 		function what_unity(){
 			console.log("what");
 			if(unity_isLive) {
+			  $("#daumRoughmapContainer1649382130886").hide("fade",{},fadeout_speed);
 			  unity.SendMessage('GraphicsManager', 'ActivateAsset',2);
 			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 			}
@@ -690,7 +692,7 @@
 			console.log("where");
 			if(unity_isLive) {
 			  $("#daumRoughmapContainer1649382130886").show("fade",{},fadein_speed);
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',-1);
 			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 			}
 			console.log("3,0");
