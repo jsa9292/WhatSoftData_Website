@@ -295,61 +295,60 @@
 		}
 		@media only screen and (orientation: portrait) {
 			#menu{
-			bottom:3.162vmin; 
-			left: 3.162vmin;
+			bottom:calc(30/720*100vh); 
+			left: calc(30/360*100vw);
 			}
 		   .button{ 
 			color:white; 
-			font: normal normal normal 50rem NeueHaas65;
+			font: normal normal normal calc(50/360*100vw) NeueHaas65;
 			font-weight:medium;
 			border:0px; 
 			margin:0px; 
-			line-height: 50rem;
+			line-height: calc(50/720*100vh);
 			}
 			#logo{
 				position:absolute;
-				height:15rem; 
-				right: 3.162vmin; 
-				top:3.162vmin;
+				height:calc(15/720*100vh); 
+				right: calc(30/360*100vw); 
+				top:calc(30/720*100vh);
 				/*top:141px;
 				/transform-origin: top right;
 				/transform: rotate(90deg);*/
 			}
 			#symbol{
 				position:absolute;
-				height:15rem; 
-				left:3.162vmin; 
-				top:3.162vmin;
+				height:calc(15/720*100vh); 
+				left:calc(30/360*100vw)min; 
+				top:calc(30/720*100vh);
 			}
 			.footer{
 			color:white; 
 			position:absolute; 
 			transform-origin:bottom right;
 			transform: rotate(90deg);
-			right:44rem; 
-			bottom: 3.162vmin; 
-			height: 14rem;
+			right:calc(44/360*100vw); 
+			bottom: calc(30/720*100vh); 
+			height: calc(14/360*100vw);
 			text-align:right; 
 			vertical-align: bottom; 
-			font:normal normal 300 7rem NeueHaasDisplayRoman;
-			}11
+			font:normal normal 300 calc(7/360*100vw) NeueHaasDisplayRoman;
+			}
 			.textblock{
 			overflow-y:scroll;
 			-ms-overflow-style: none;  /* IE and Edge */
 			scrollbar-width: none;  /* Firefox */
 			color:white; 
 			position: absolute; 
-			left:2.108rem;
-			right:2.108rem;
-			bottom:190rem;
+			left:calc(30/360*100vw);
+			right:calc(30/360*100vw);
+			bottom:calc(190/720*100vh);
 			top:40vh;
-			font-size:11rem;
-			padding: 15rem;
+			font-size:calc(11/360*100vw);
 			border:0px; 
 			margin:0px; 
 			background-color:var(--clear-background); 
 			text-align: left;
-			line-height:28rem;
+			line-height:calc(28/360*100vw);
 			text-align: justify;
 			  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%,black 95%, transparent 100%);
 			  mask-image: linear-gradient(to bottom, transparent 0%, black 5%,black 95%, transparent 100%);
@@ -364,68 +363,68 @@
 			color:rgb(120,120,120); 
 			font-family:var(--text-en-font-family); 
 			font-weight: bold; 
-			font-size:1.16vmin;
-			line-height: 15rem;
+			font-size:calc(11/360*100vw);
+			line-height: calc(15/360*100vw);
 			text-align: left;
 			hyphens: auto;
 			letter-spacing: 0px;
-			margin-top: 10rem;
-			margin-bottom:15rem;
+			margin-top: calc(10/360*100vw);
+			margin-bottom:calc(15/360*100vw);
 			}
 			.ko-text{
 			color:white; 
-			font: normal normal normal 1.16vmin SUIT-Variable;
+			font: normal normal normal calc(11/360*100vw) SUIT-Variable;
 			font-weight: bolder;
-			line-height: 15rem;
+			line-height: calc(15/360*100vw);
 			text-align: left;
-			margin-top: 10rem;
-			margin-bottom:15rem;
+			margin-top: calc(10/360*100vw);
+			margin-bottom:calc(15/360*100vw);
 			letter-spacing: 0px;
 			}
 			.ko-job{
 			text-align: left;
-			font: normal normal normal 1.16vmin SUIT-Variable;
+			font: normal normal normal calc(11/360*100vw) SUIT-Variable;
 			font-weight:meidum;
 			letter-spacing: 0px;
 			color: #FFFFFF;
 			opacity: 1;
 			}
 			.en-job{
-			font: normal normal normal 1.16vmin NeueHaasDisplayRoman;
+			font: normal normal normal calc(11/360*100vw) NeueHaasDisplayRoman;
 			letter-spacing: 0px;
 			color: #FFFFFF80;
 			}
 			.emailText{
 				text-align: left;
-				font: normal normal bold 1.16vmin NeueHaasDisplayRoman;
+				font: normal normal bold calc(11/360*100vw) NeueHaasDisplayRoman;
 				letter-spacing: 0px;
 				color: #FFFFFF;
 			}
 			
 			.expander{
-				font: normal normal normal 1.16vmin NeueHaas65;
+				font: normal normal normal calc(11/360*100vw) NeueHaas65;
 				font-weight: medium;
 				cursor:pointer;
 			}
 			h1{
 				text-align: left;
-				font: normal normal normal 2.108rem NeueHaas65;
+				font: normal normal normal calc(30/360*100vw) NeueHaas65;
 				font-weight: medium;
 				letter-spacing: 0px;
 				color: #FFFFFF;
 				opacity: 1;
-				margin-bottom: 10rem;
-				margin-top: 10rem;
+				margin-bottom: calc(10/360*100vw);
+				margin-top: calc(10/360*100vw);
 			}
 			h2{
 				text-align: left;
-				font: italic normal normal 2.108rem NeueHaasDisplayRoman;
+				font: italic normal normal calc(30/360*100vw) NeueHaasDisplayRoman;
 				font-weight: light;
 				letter-spacing: 0px;
 				color: #FD5000;
 				opacity: 1;
-				margin-top: 10rem;
-				margin-bottom: 10rem;
+				margin-top: calc(10/360*100vw);
+				margin-bottom: calc(10/360*100vw);
 			}
 			#kakaoMap{
 			position: relative; 
