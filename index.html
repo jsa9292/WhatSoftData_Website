@@ -692,6 +692,7 @@
 			console.log("where");
 			if(unity_isLive) {
 			  $("#daumRoughmapContainer1649382130886").show("fade",{},fadein_speed);
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',3);
 			  unity.SendMessage('GraphicsManager', 'ParticleToggle',0);
 			}
 			console.log("3,0");
