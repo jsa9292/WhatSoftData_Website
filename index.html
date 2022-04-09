@@ -279,7 +279,7 @@
 		top:50vh; 
 		filter:brightness(100%);
 		}
-		
+
 		#menu{
 		display: flex;
 		flex-direction:column-reverse;
@@ -872,7 +872,35 @@
 				$(this).text("+");
 				}
 			})
-        });
+			
+		$("#who_insun").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		 
+		})
+		$("#who_sooyeon").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		
+		})
+		$("#who_yesun").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		
+		})
+		$("#who_jungsu").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+		
+		})
+		$("#what_traces").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateMarker',0);
+		
+		})
+		$("#what_performing").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateMarker',1);
+		
+		})
+		$("#what_threshold").click(function(event){
+			  unity.SendMessage('GraphicsManager', 'ActivateMarker',2);
+		
+		})
       };
       document.body.appendChild(script);
     </script>
