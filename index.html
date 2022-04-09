@@ -863,48 +863,104 @@
 
 			$('.expander')
 			.text("+")
-			.click(function (event){
+			})
+			
+			$("#who_insun").click(function(event){
 				var d = $(this).prev('div');
 				if(d.css("height")== "0px"){
 				d.css("height","auto");
 				$(this).text("-");
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				}
-			})
-			
-			$("#who_symbol").click(function(event){
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
-		 
-			})
-			$("#who_insun").click(function(event){
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				}
 		 
 			})
 			$("#who_sooyeon").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				}
 		
 			})
 			$("#who_yesun").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				}
 		
 			})
 			$("#who_jungsu").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				}
 		
 			})
 			$("#what_traces").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateMarker',0);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				}
 		
 			})
 			$("#what_performing").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateMarker',1);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				}
 		
 			})
 			$("#what_threshold").click(function(event){
+				var d = $(this).prev('div');
+				if(d.css("height")== "0px"){
+				d.css("height","auto");
+				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateMarker',2);
+				}
+				else{
+				d.css("height","0px");
+				$(this).text("+");
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				}
 		
 			})});
       }
