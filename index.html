@@ -665,6 +665,7 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
       }
+	  //preload
 		var fadein_speed = 200;
 		var fadeout_speed = 200;
 		var start_anim_speed = 1000;
@@ -874,6 +875,10 @@
 				}
 			})
 			
+			$("#who_symbol").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+		 
+			})
 			$("#who_insun").click(function(event){
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 		 
