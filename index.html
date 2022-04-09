@@ -25,14 +25,9 @@
 	
 	<div>
 		<img id = "loading-symbol"src="images/symbol.png"></img>
-			
-		<div id ="kakaoMap">
-		<div style="font:normal normal 400 12px/normal dotum, sans-serif; width:640px; height:392px; color:#333; position:relative"><div style="height: 360px;"><a href="https://map.kakao.com/?urlX=499241.0&amp;urlY=1107720.0&amp;name=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EB%8C%80%EB%A1%9C30%EA%B8%B8%2027-3&amp;map_type=TYPE_MAP&amp;from=roughmap" target="_blank"><img class="map" src="http://t1.daumcdn.net/roughmap/imgmap/9d10de0464bdd0edb580f69a544764189d3eb71ff3ff79aec06fb6c205dadc1f" style="border:1px solid #ccc;" width="638px" height="358px"></a></div></div></div></div>
-		</div>
 		
 		<div id ="kakaoMap">
 		</div>
-
 		<input id="logo" class="button"  type="image" src="images/logo.png">
 		<input id="symbol" class="button" type="image" src="images/symbol.png">
 		<div id="footer" class="footer" >
@@ -256,6 +251,7 @@
 			<div class="textbuffer"></div>
 		</div>
 		</ol>
+
 	</div>
 	<style>
 		@font-face {font-family: NeueHaasDisplayRoman; src: url('fonts/NeueHaasDisplayRoman.ttf');}
@@ -586,13 +582,12 @@
 			#kakaoMap{
 			position: absolute; 
 			display:inline-block; 
-			text-alight:right;
-			top:50vh;
-			right:0px;
-			overflow:hidden; 
-			margin-left: auto;
-			margin-right: calc(100/1920*100vw);
-			transform: translate(0,-180);
+			background-image: url("images/naver_map.png");
+			background-size: contain;
+			right: calc(100/1920*100vw);
+			width:calc(800/1920*100vw);
+			height: calc(400/1080*100vh);
+			transform:translate(0,calc(-200/1080*100vh);
 			}
 
 		}
@@ -718,7 +713,7 @@
 
 
 		$(".textblock").hide();
-		$("#kakaoMap").hide();
+		//("#kakaoMap").hide();
 		$( "#logo" )
 		.click( function( event ) 
 		{
