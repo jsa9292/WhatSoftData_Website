@@ -875,13 +875,13 @@
 			$("#who_symbol").click(function(event){
 				var d = $(this).prev('div');
 				if(d.css("height")== "0px"){
-				d.css("height","auto");
-				$(this).text("-");
+				  d.css("height","auto");
+				  $(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 				}
 				else{
-				d.css("height","0px");
-				$(this).text("+");
+				  d.css("height","0px");
+				  $(this).text("+");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
 				}
 		 
