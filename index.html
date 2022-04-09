@@ -880,7 +880,7 @@
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
 				}
 		 
 			})
@@ -890,11 +890,12 @@
 				d.css("height","auto");
 				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',4);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				  unity.SendMessage('GraphicsManager', 'DeactivateGO',4);
 				}
 		 
 			})
@@ -904,11 +905,12 @@
 				d.css("height","auto");
 				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',6);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				  unity.SendMessage('GraphicsManager', 'DeactivateGO',6);
 				}
 		
 			})
@@ -918,11 +920,12 @@
 				d.css("height","auto");
 				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',3);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				  unity.SendMessage('GraphicsManager', 'DeactivateGO',3);
 				}
 		
 			})
@@ -932,11 +935,12 @@
 				d.css("height","auto");
 				$(this).text("-");
 				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',5);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				  unity.SendMessage('GraphicsManager', 'DeactivateGO',5);
 				}
 		
 			})
@@ -945,12 +949,12 @@
 				if(d.css("height")== "0px"){
 				d.css("height","auto");
 				$(this).text("-");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',0);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',0);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				  unity.SendMessage('GraphicsManager', 'DeActivateGO',0);
 				}
 		
 			})
@@ -959,12 +963,12 @@
 				if(d.css("height")== "0px"){
 				d.css("height","auto");
 				$(this).text("-");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',1);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				  unity.SendMessage('GraphicsManager', 'DeActivateGO',1);
 				}
 		
 			})
@@ -973,12 +977,12 @@
 				if(d.css("height")== "0px"){
 				d.css("height","auto");
 				$(this).text("-");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',2);
+				  unity.SendMessage('GraphicsManager', 'ActivateGO',2);
 				}
 				else{
 				d.css("height","0px");
 				$(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateMarker',-1);
+				  unity.SendMessage('GraphicsManager', 'DeActivateGO',2);
 				}
 		
 			});
