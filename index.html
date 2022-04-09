@@ -803,8 +803,7 @@
 		  var g = parseInt(lerp(52,71,progress));
 		  var b = parseInt(lerp(0,199,progress));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
-		  loadingSymbol.style.filter = "brightness("+100*(1-progress)+"%)";
-		}).then((unityInstance) => {
+		  loadingSymbol.style.filter = "brightness("+100*(1-progress)+"%)";}).then((unityInstance) => {
 		  unity_isLive = true;
 		  unity = unityInstance;
 		  loadingSymbol.style.height = "0px";
@@ -873,39 +872,36 @@
 				}
 			})
 			
-		$("#who_insun").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+			$("#who_insun").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 		 
-		})
-		$("#who_sooyeon").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+			})
+			$("#who_sooyeon").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 		
-		})
-		$("#who_yesun").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+			})
+			$("#who_yesun").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 		
-		})
-		$("#who_jungsu").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+			})
+			$("#who_jungsu").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 		
-		})
-		$("#what_traces").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateMarker',0);
+			})
+			$("#what_traces").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',0);
 		
-		})
-		$("#what_performing").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateMarker',1);
+			})
+			$("#what_performing").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',1);
 		
-		})
-		$("#what_threshold").click(function(event){
-			  unity.SendMessage('GraphicsManager', 'ActivateMarker',2);
+			})
+			$("#what_threshold").click(function(event){
+				  unity.SendMessage('GraphicsManager', 'ActivateMarker',2);
 		
-		})
-      };
-      document.body.appendChild(script);
+			})});
+      }
+	  document.body.appendChild(script);
     </script>
-
-	<!-- Text part of the page -->
-	
   </body>
 </html>
