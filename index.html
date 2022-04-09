@@ -804,7 +804,8 @@
 		  var b = parseInt(lerp(0,199,progress));
 		  canvas.style.background = "rgb("+r+","+g+","+b+")";
 		  loadingSymbol.style.filter = "brightness("+100*(1-progress)+"%)";
-		  }).then((unityInstance) => {
+		  })
+		.then((unityInstance) => {
 		  unity_isLive = true;
 		  unity = unityInstance;
 		  loadingSymbol.style.height = "0px";
