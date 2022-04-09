@@ -877,12 +877,12 @@
 				if(d.css("height")== "0px"){
 				  d.css("height","auto");
 				  $(this).text("-");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
 				}
 				else{
 				  d.css("height","0px");
 				  $(this).text("+");
-				  unity.SendMessage('GraphicsManager', 'ActivateAsset',0);
+				  unity.SendMessage('GraphicsManager', 'ActivateAsset',1);
 				}
 		 
 			})
